@@ -1,12 +1,14 @@
 import './App.css'
+import Header from './components/Header.tsx';
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>こんにちは</h1>
-      </div>
+      <Header />
+      <main>
+        
+      </main>
     </>
   )
 }
