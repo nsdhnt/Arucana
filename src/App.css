@@ -1,6 +1,6 @@
 html{
   font-size: 62.5%;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
 }
 
 *{
@@ -8,3 +8,88 @@ html{
   padding: 0;
 }
 
+.container{
+  /* display: grid;
+  grid-template-columns: 378px 650px 1fr; */
+  background-color: #381E00;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  div{
+    background-color: #E5CEA5;
+    /* border: solid 1px tomato; */
+    .block-name{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      p{
+        color: #381E00;
+        font-size: 3.6rem;
+        font-weight: bold;
+      }
+      img{
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+    }
+    .block-icon{
+      width: 124px;
+      height: 124px;
+    }
+  }
+  .about{
+    width: 378px;
+    height: 286px;
+  }
+  .product{
+    width: 650px;
+    height: 286px;
+  }
+  .account{
+    width: 356px;
+    height: 286px;
+    background-color: #E5CEA5;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    .account-name{
+      color: #381E00;
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+    .keep-article-num{
+      color: #381E00;
+      font-size: 2.4rem;
+      font-weight: bold;
+      span{
+        font-size: 4.8rem;
+      }
+    }
+  }
+  .usage{
+    width: 378px;
+    height: 286px;
+  }
+  .article{
+    width: 503px;
+    height: 286px;
+  }
+  .data{
+    width: 503px;
+    height: 286px;
+  }
+  .zenn{
+    width: 514px;
+    height: 286px;
+  }
+  .qiita{
+    width: 514px;
+    height: 286px;
+  }
+  .logout{
+    width: 356px;
+    height: 286px;
+  }
+}
