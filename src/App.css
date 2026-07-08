@@ -13,9 +13,12 @@ html{
   grid-template-columns: 378px 650px 1fr; */
   background-color: #381E00;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
-  gap: 28px;
+  row-gap: 3%;
+  column-gap: 1.5%;
+  height: calc(100vh - 60px);
+  /* border: solid 1px tomato; */
   div{
     background-color: #E5CEA5;
     /* border: solid 1px tomato; */
@@ -39,20 +42,20 @@ html{
     }
   }
   .about{
-    width: 378px;
-    height: 286px;
+    width: 28%;
+    height: 32%;
   }
   .product{
-    width: 650px;
-    height: 286px;
+    width: 45%;
+    height: 32%;
   }
   .account{
-    width: 356px;
-    height: 286px;
+    width: 24%;
+    height: 32%;
     background-color: #E5CEA5;
     img{
-      width: 100px;
-      height: 100px;
+      width: 10%;
+      /* height: 50%; */
     }
     .account-name{
       color: #381E00;
@@ -69,27 +72,27 @@ html{
     }
   }
   .usage{
-    width: 378px;
-    height: 286px;
+    width: 28%;
+    height: 32%;
   }
   .article{
-    width: 503px;
-    height: 286px;
+    width: 34.5%;
+    height: 32%;
   }
   .data{
-    width: 503px;
-    height: 286px;
+    width: 34.5%;
+    height: 32%;
   }
   .zenn{
-    width: 514px;
-    height: 286px;
+    width: 36.5%;
+    height: 30%;
   }
   .qiita{
-    width: 514px;
-    height: 286px;
+    width: 36.5%;
+    height: 30%;
   }
   .logout{
-    width: 356px;
-    height: 286px;
+    width: 24%;
+    height: 30%;
   }
 }
