@@ -1,10 +1,12 @@
 import './article.css';
 import Header from "../components/Header";
-
 import sideDateArrow from "../assets/side-date-arrow.png";
 
 
-function Article() {
+function Article({ articles, loading }) {
+  console.log(articles);
+  console.log(loading);
+  
   return(
     <>
       <Header />
@@ -130,6 +132,55 @@ function Article() {
           <div className='button-wrap'>
             <button type="button">条件をクリア</button>
             <button type="button">〇〇件を表示</button>
+          </div>
+        </div>
+        <div className='main-block'>
+          <div className='article-list'>
+            {loading ? (
+              <p>読み込み中...</p>
+            ) : articles.length === 0 ? (
+              <p>記事が見つかりませんでした。</p>
+            ) : (
+              articles.map((article, index) => {
+                const date = new Date(article.created_at).toLocaleString('ja-JP');
+
+                return (
+                  <article className='article-content' key={article.id}>
+                    <a href={article.url} target='_blank' rel="noopener noreferrer">
+                      <h1>{String(index + 1).padStart(2, '0')}</h1>
+                      <p className='article-title'>{article.title}</p>
+                      <p className='article-info'>
+                        <time>{date}</time>
+                        <span>@{article.user.id}</span>
+                        <span>{article.likes_count}</span>
+                      </p>
+                    </a>
+                  </article>
+                )
+              })
+            )}
+            {/* <article className='article-content'>
+              <a href="#">
+                <h1>01</h1>
+                <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
+                <p className='article-info'>
+                  <time>2026/5/26</time>
+                  <span>@honda-dev-jp</span>
+                  <span>128</span>
+                </p>
+              </a>
+            </article>
+            <article className='article-content'>
+              <a href="#">
+                <h1>02</h1>
+                <p className='article-title'>CSS @keyframes をビジュアル編集するツールを作った — タイムライン UI と「アニメーションを再起動する」CSS のワナ</p>
+                <p className='article-info'>
+                  <time>2026/5/26</time>
+                  <span>@sen-ltd</span>
+                  <span>128</span>
+                </p>
+              </a>
+            </article> */}
           </div>
         </div>
       </main>
