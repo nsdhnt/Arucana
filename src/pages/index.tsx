@@ -1,5 +1,6 @@
 import './index.css';
 import Header from '../components/Header.tsx';
+import { Link } from 'react-router-dom';
 
 import rightAllow from '../assets/right-allow.png';
 import blockIconAbout from '../assets/block-icon-about.png';
@@ -36,7 +37,7 @@ function Index() {
           <div className='account'>
             <img src={accountIcon} alt="" />
             <p className='account-name'>@hinata_html</p>
-            <p className='keep-article-num'>保存数<span>48</span>記事</p>
+            <p className='keep-article-num'>保存数<span> 48 </span>記事</p>
           </div>
 
           <div className='usage'>
@@ -48,11 +49,13 @@ function Index() {
           </div>
 
           <div className='article'>
-            <div className='block-name'>
-              <p>記事一覧</p>
-              <img src={rightAllow} alt="右矢印" />
-            </div>
-            <img className='block-icon' src={blockIconArticle} alt="ABOUT" />
+            <Link to="/article">
+              <div className='block-name'>
+                <p>記事一覧</p>
+                <img src={rightAllow} alt="右矢印" />
+              </div>
+              <img className='block-icon' src={blockIconArticle} alt="ABOUT" />
+            </Link>
           </div>
 
           <div className='data'>
@@ -65,14 +68,18 @@ function Index() {
 
           <div className='zenn'>
             <div className='block-name'>
-              <p>Zennへ</p>
+              <a href="https://zenn.dev/" target='_blank'>
+                <p>Zennへ</p>
+              </a>
               <img src={rightAllow} alt="右矢印" />
             </div>
           </div>
 
           <div className='qiita'>
             <div className='block-name'>
-              <p>Qiitaへ</p>
+              <a href="https://qiita.com/" target='_blank'>
+                <p>Qiitaへ</p>
+              </a>
               <img src={rightAllow} alt="右矢印" />
             </div>
           </div>

@@ -1,88 +1,128 @@
-.container{
-  /* display: grid;
-  grid-template-columns: 378px 650px 1fr; */
-  background-color: #381E00;
-  display: flex;
-  /* justify-content: center; */
-  flex-wrap: wrap;
-  row-gap: 3%;
-  column-gap: 1.5%;
-  height: calc(100vh - 60px);
-  /* border: solid 1px tomato; */
-  div{
-    background-color: #E5CEA5;
+
+main{
+  .container{
+    /* display: grid;
+    grid-template-columns: 378px 650px 1fr; */
+    background-color: #381E00;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    row-gap: 3%;
+    column-gap: 1.5%;
+    width: 100%;
+    height: calc(100vh - 60px);
     /* border: solid 1px tomato; */
-    .block-name{
+    &>div{
+      background-color: #E5CEA5;
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
-      p{
+      cursor: pointer;
+      /* border: solid 1px tomato; */
+      &:hover{
+        .block-name img{
+          transform: translateX(10px);
+        }
+        &>img{
+          transform: scale(0.8);
+        }
+      }
+      &>img{
+        transition: 0.3s;
+      }
+      .block-name{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        p{
+          color: #381E00;
+          font-size: 3.6rem;
+          font-weight: bold;
+        }
+        img{
+          transition: 0.3s;
+          width: 2.6rem;
+          height: 2.6rem;
+        }
+      }
+      .block-icon{
+        width: 124px;
+        height: 124px;
+      }
+    }
+    .about{
+      width: 28%;
+      height: 32%;
+    }
+    .product{
+      width: 45%;
+      height: 32%;
+    }
+    .account{
+      width: 24%;
+      height: 32%;
+      background-color: #E5CEA5;
+      img{
+        width: 10%;
+        /* height: 50%; */
+      }
+      .account-name{
         color: #381E00;
-        font-size: 3.6rem;
+        font-size: 2.4rem;
         font-weight: bold;
       }
-      img{
-        width: 2.6rem;
-        height: 2.6rem;
+      .keep-article-num{
+        color: #381E00;
+        font-size: 2.4rem;
+        font-weight: bold;
+        span{
+          font-size: 4.8rem;
+        }
       }
     }
-    .block-icon{
-      width: 124px;
-      height: 124px;
+    .usage{
+      width: 28%;
+      height: 32%;
     }
-  }
-  .about{
-    width: 28%;
-    height: 32%;
-  }
-  .product{
-    width: 45%;
-    height: 32%;
-  }
-  .account{
-    width: 24%;
-    height: 32%;
-    background-color: #E5CEA5;
-    img{
-      width: 10%;
-      /* height: 50%; */
-    }
-    .account-name{
-      color: #381E00;
-      font-size: 2.4rem;
-      font-weight: bold;
-    }
-    .keep-article-num{
-      color: #381E00;
-      font-size: 2.4rem;
-      font-weight: bold;
-      span{
-        font-size: 4.8rem;
+    .article{
+      width: 34.5%;
+      height: 32%;
+      &:hover{
+        a{
+          &>img{
+            transform: scale(0.8);
+          }
+        }
+      }
+      a{
+        text-decoration: none;
+        img{
+          transition: 0.3s;
+        }
       }
     }
-  }
-  .usage{
-    width: 28%;
-    height: 32%;
-  }
-  .article{
-    width: 34.5%;
-    height: 32%;
-  }
-  .data{
-    width: 34.5%;
-    height: 32%;
-  }
-  .zenn{
-    width: 36.5%;
-    height: 30%;
-  }
-  .qiita{
-    width: 36.5%;
-    height: 30%;
-  }
-  .logout{
-    width: 24%;
-    height: 30%;
+    .data{
+      width: 34.5%;
+      height: 32%;
+    }
+    .zenn{
+      width: 36.5%;
+      height: 30%;
+      a{
+        text-decoration: none;
+      }
+    }
+    .qiita{
+      width: 36.5%;
+      height: 30%;
+      a{
+        text-decoration: none;
+      }
+    }
+    .logout{
+      width: 24%;
+      height: 30%;
+    }
   }
 }
