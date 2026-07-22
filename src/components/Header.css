@@ -17,7 +17,7 @@ header{
       justify-content: center;
       align-items: center;
       gap: 6px;
-      &:first-child{
+      &.active{
         background-color: #005D9B;
       }
       /* border: solid 1px white; */
