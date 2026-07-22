@@ -24,6 +24,7 @@ import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';import './App.css'
 import Index from './pages/index.tsx';
 import Article from './pages/article.tsx';
+import Data from './pages/data.tsx';
 
 function App() {
   // 取得したデータを保存するstate
@@ -69,6 +70,7 @@ function App() {
       <Route 
         path="/article" 
         element={<Article articles={articles} loading={loading} />} />
+      <Route path="/data" element={<Data />} />
     </Routes>
   )
 }
