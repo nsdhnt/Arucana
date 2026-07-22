@@ -25,6 +25,7 @@ import { Routes, Route } from 'react-router-dom';import './App.css'
 import Index from './pages/index.tsx';
 import Article from './pages/article.tsx';
 import Data from './pages/data.tsx';
+import Product from './pages/product.tsx';
 
 function App() {
   // 取得したデータを保存するstate
@@ -71,6 +72,7 @@ function App() {
         path="/article" 
         element={<Article articles={articles} loading={loading} />} />
       <Route path="/data" element={<Data />} />
+      <Route path="/product" element={<Product />} />
     </Routes>
   )
 }
