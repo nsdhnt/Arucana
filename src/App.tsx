@@ -1,3 +1,25 @@
+// Qiitaのタグの型
+interface QiitaTag {
+  name: string;
+}
+
+// Qiitaのユーザーの型
+interface QiitaUser {
+  id: string;
+}
+
+// 記事全体の型
+interface QiitaArticle {
+  id: string;
+  title: string;
+  url: string;
+  created_at: string;
+  likes_count: number;
+  user: QiitaUser;
+  tags: QiitaTag[];
+}
+
+
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';import './App.css'
 import Index from './pages/index.tsx';
@@ -5,8 +27,8 @@ import Article from './pages/article.tsx';
 
 function App() {
   // 取得したデータを保存するstate
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<QiitaArticle[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // APIの情報を定義
   const TOKEN = import.meta.env.VITE_QIITA_TOKEN;
