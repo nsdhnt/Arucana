@@ -1,12 +1,47 @@
+// Article.tsx の上部でPropsの型を定義
+interface ArticleProps {
+  articles: QiitaArticle[];
+  loading: boolean;
+}
+
+import { useState } from 'react';
 import './article.css';
 import Header from "../components/Header";
 import sideDateArrow from "../assets/side-date-arrow.png";
 
 
-function Article({ articles, loading }) {
-  console.log(articles);
-  console.log(loading);
-  
+function Article({ articles, loading }: ArticleProps) {
+  const [selectedTag, setSelectedTag] = useState<string>('');
+
+  // console.log(articles);
+  // console.log(loading);
+
+  const allTags = Array.from(
+    new Set(
+      articles.flatMap(article => article.tags.map(tag => tag.name))
+    )
+  );
+
+  function tagFilter(tagName: string){
+    // console.log(tagName);
+
+    // selectedTagの値を更新
+    if(selectedTag === tagName){
+      setSelectedTag('');
+    }
+    else{
+      setSelectedTag(tagName);
+    }
+  }
+
+  // 配列を絞り込む関数
+  const filteredArticles = articles.filter(article => {
+    if(selectedTag === '') return true;
+
+    return article.tags.some(tag => tag.name === selectedTag);
+  });
+
+
   return(
     <>
       <Header />
@@ -17,14 +52,26 @@ function Article({ articles, loading }) {
             <section className='tag'>
               <h1>タグ</h1>
               <div className='tag-wrap'>
-                <p>初心者</p>
+                {allTags.map(tagName => {
+                  const isActive = tagName === selectedTag;
+                  return(
+                    <p 
+                      key={tagName} 
+                      onClick={() => tagFilter(tagName)}
+                      className={isActive ? 'active' : ''}
+                    >
+                      {tagName}
+                    </p>
+                  );
+                })}
+                {/* <p>初心者</p>
                 <p>JavaScript</p>
                 <p>TypeScript</p>
                 <p>個人開発</p>
                 <p>React</p>
-                <p>Github</p>
+                <p>Github</p> */}
               </div>
-              <p className='more-display'>さらに表示</p>
+              {/* <p className='more-display'>さらに表示</p> */}
             </section>
             <section className='date'>
               <h1>日付</h1>
@@ -138,11 +185,12 @@ function Article({ articles, loading }) {
           <div className='article-list'>
             {loading ? (
               <p>読み込み中...</p>
-            ) : articles.length === 0 ? (
+            ) : filteredArticles.length === 0 ? (
               <p>記事が見つかりませんでした。</p>
             ) : (
-              articles.map((article, index) => {
+              filteredArticles.map((article, index) => {
                 const date = new Date(article.created_at).toLocaleString('ja-JP');
+                // console.log(article.tags);
 
                 return (
                   <article className='article-content' key={article.id}>
@@ -153,6 +201,11 @@ function Article({ articles, loading }) {
                         <time>{date}</time>
                         <span>@{article.user.id}</span>
                         <span>{article.likes_count}</span>
+                      </p>
+                      <p className='article-tag'>
+                        {article.tags.map((tag) => (
+                          <span key={tag.name}>{tag.name}</span>
+                        ))}
                       </p>
                     </a>
                   </article>
@@ -167,6 +220,9 @@ function Article({ articles, loading }) {
                   <time>2026/5/26</time>
                   <span>@honda-dev-jp</span>
                   <span>128</span>
+                </p>
+                <p className='article-tag'>
+                  <span></span>
                 </p>
               </a>
             </article>
