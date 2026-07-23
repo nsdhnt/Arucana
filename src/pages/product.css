@@ -1,0 +1,28 @@
+main{
+  .side-bar{
+    .product-nav{
+      padding: 32px;
+      /* border: solid 1px tomato; */
+      ul{
+        /* border: solid 1px black; */
+        li{
+          list-style: none;
+          width: 100%;
+          height: 66px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.4rem;
+          font-weight: bold;
+          border-radius: 10px;
+          cursor: pointer;
+          /* border: solid 1px white; */
+          &:first-child{
+            background-color: #fff;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
