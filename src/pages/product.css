@@ -2,17 +2,20 @@ main{
   .side-bar{
     .product-nav{
       padding: 32px;
+      height: 100%;
       /* border: solid 1px tomato; */
       ul{
+        overflow-y: scroll;
         /* border: solid 1px black; */
+        height: 100%;
         li{
           list-style: none;
           width: 100%;
-          height: 66px;
+          height: 67px;
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 2.4rem;
+          font-size: 2rem;
           font-weight: bold;
           border-radius: 10px;
           cursor: pointer;
