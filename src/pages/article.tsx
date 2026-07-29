@@ -11,11 +11,20 @@ import sideDateArrow from "../assets/side-date-arrow.png";
 
 
 function Article({ articles, loading }: ArticleProps) {
-  const [selectedTag, setSelectedTag] = useState<string>('');
+  // キーワード検索
+  const [keyword, setKeyword] = useState<string>("");
+
+  function handleKeyword(e: React.ChangeEvent<HTMLInputElement>){
+    setKeyword(e.target.value);
+  }
+
+  // タグ検索
+  const [selectedTag, setSelectedTag] = useState<string>("");
 
   // console.log(articles);
   // console.log(loading);
 
+  // タグの種類の重複防止
   const allTags = Array.from(
     new Set(
       articles.flatMap(article => article.tags.map(tag => tag.name))
@@ -27,20 +36,77 @@ function Article({ articles, loading }: ArticleProps) {
 
     // selectedTagの値を更新
     if(selectedTag === tagName){
-      setSelectedTag('');
+      setSelectedTag("");
     }
     else{
       setSelectedTag(tagName);
     }
+    // setSelectedTag([...selectedTag, tagName]);
   }
 
+  // 日付検索
+  // const today = new Date().toLocaleDateString("sv-SE");
+  const [fromDate, setFromDate] = useState<string>("");
+  const [toDate, setToDate] = useState<string>("");
+
+  function handleFromDate(e: React.ChangeEvent<HTMLInputElement>){
+    setFromDate(e.target.value);
+    // console.log(from);
+  }
+  
+  function handleToDate(e: React.ChangeEvent<HTMLInputElement>){
+    setToDate(e.target.value);
+  }
+  
+  // articles.forEach((article) => {
+    //   console.log(new Date(article.created_at));
+    
+    // });
+    
   // 配列を絞り込む関数
-  const filteredArticles = articles.filter(article => {
-    if(selectedTag === '') return true;
+  const filteredArticles = 
+    articles.filter(article => {
+      // return article.title.includes(keyword);
+      const articleDate = new Date(article.created_at);
+      const from = new Date(fromDate);
+      const to = new Date(toDate);
 
-    return article.tags.some(tag => tag.name === selectedTag);
-  });
+      // キーワードの条件
+      const keywordMatch = article.title.includes(keyword);
 
+      // タグの条件
+      const tagMatch = 
+        selectedTag === "" ||
+        article.tags.some(tag => tag.name === selectedTag);
+
+      // 開始日の条件
+      const fromMatch = 
+        fromDate === "" ||
+        articleDate >= from;
+      // 終了日の条件
+      const toMatch = 
+        toDate === "" ||
+        articleDate <= to;
+
+      return (
+        keywordMatch &&
+        tagMatch &&
+        fromMatch &&
+        toMatch
+      );
+
+      // if(selectedTag === '') return true  
+      //   && article.title.includes(keyword)
+      //   && fromDate === "" && toDate === ""
+      //   || articleDate >= from && toDate === ""
+      //   || fromDate === "" && articleDate <= to
+      //   || articleDate >= from && articleDate <= to;
+
+      // return article.tags.some(tag => tag.name === selectedTag) 
+      //   && article.title.includes(keyword)
+      //   && articleDate >= from && articleDate <= to;
+    });
+  
 
   return(
     <>
@@ -48,7 +114,10 @@ function Article({ articles, loading }: ArticleProps) {
       <main>
         <div className='side-bar'>
           <div className='filter-wrap'>
-            <input type="search" name="" id="" placeholder='キーワードで検索する' />
+            <input type="search" name="" id="" placeholder='キーワードで検索する'
+              value={keyword}
+              onChange={handleKeyword}
+            />
             <section className='tag'>
               <h1>タグ</h1>
               <div className='tag-wrap'>
@@ -64,105 +133,25 @@ function Article({ articles, loading }: ArticleProps) {
                     </p>
                   );
                 })}
-                {/* <p>初心者</p>
-                <p>JavaScript</p>
-                <p>TypeScript</p>
-                <p>個人開発</p>
-                <p>React</p>
-                <p>Github</p> */}
               </div>
               {/* <p className='more-display'>さらに表示</p> */}
             </section>
             <section className='date'>
               <h1>日付</h1>
               <div className='select-dates froms'>
-                <div className='select-date from'>
-                  <select name="" id="">
-                    <option value="2026">2026年</option>
-                    <option value="2025">2025年</option>
-                    <option value="2024">2024年</option>
-                  </select>
-                </div>
-                <div className='select-date from'>
-                  <select name="" id="">
-                    <option value="">1月</option>
-                    <option value="">2月</option>
-                    <option value="">3月</option>
-                    <option value="">4月</option>
-                    <option value="">5月</option>
-                    <option value="">6月</option>
-                    <option value="">7月</option>
-                    <option value="">8月</option>
-                    <option value="">9月</option>
-                    <option value="">10月</option>
-                    <option value="">11月</option>
-                    <option value="">12月</option>
-                  </select>
-                </div>
-                <div className='select-date from'>
-                  <select name="" id="">
-                    <option value="">1日</option>
-                    <option value="">2日</option>
-                    <option value="">3日</option>
-                    <option value="">4日</option>
-                    <option value="">5日</option>
-                    <option value="">6日</option>
-                    <option value="">7日</option>
-                    <option value="">8日</option>
-                    <option value="">9日</option>
-                    <option value="">10日</option>
-                    <option value="">11日</option>
-                    <option value="">12日</option>
-                    <option value="">13日</option>
-                    <option value="">14日</option>
-                    <option value="">15日</option>
-                  </select>
-                </div>
+                <input 
+                  className='select-date' 
+                  value={fromDate} type="date" name="" id=""
+                  onChange={handleFromDate}
+                  />
               </div>
               <img className='side-date-arrow' src={sideDateArrow} alt="" />
               <div className='select-dates tos'>
-                <div className='select-date to'>
-                  <select name="" id="">
-                    <option value="2026">2026年</option>
-                    <option value="2025">2025年</option>
-                    <option value="2024">2024年</option>
-                  </select>
-                </div>
-                <div className='select-date to'>
-                  <select name="" id="">
-                    <option value="">1月</option>
-                    <option value="">2月</option>
-                    <option value="">3月</option>
-                    <option value="">4月</option>
-                    <option value="">5月</option>
-                    <option value="">6月</option>
-                    <option value="">7月</option>
-                    <option value="">8月</option>
-                    <option value="">9月</option>
-                    <option value="">10月</option>
-                    <option value="">11月</option>
-                    <option value="">12月</option>
-                  </select>
-                </div>
-                <div className='select-date to'>
-                  <select name="" id="">
-                    <option value="">1日</option>
-                    <option value="">2日</option>
-                    <option value="">3日</option>
-                    <option value="">4日</option>
-                    <option value="">5日</option>
-                    <option value="">6日</option>
-                    <option value="">7日</option>
-                    <option value="">8日</option>
-                    <option value="">9日</option>
-                    <option value="">10日</option>
-                    <option value="">11日</option>
-                    <option value="">12日</option>
-                    <option value="">13日</option>
-                    <option value="">14日</option>
-                    <option value="">15日</option>
-                  </select>
-                </div>
+                <input 
+                  className='select-date' 
+                  value={toDate} type="date" name="" id=""
+                  onChange={handleToDate}
+                  />
               </div>
             </section>
             <section className='display-order'>
@@ -178,7 +167,7 @@ function Article({ articles, loading }: ArticleProps) {
           </div>
           <div className='button-wrap'>
             <button type="button">条件をクリア</button>
-            <button type="button">〇〇件を表示</button>
+            <button type="button">{filteredArticles.length}件を表示</button>
           </div>
         </div>
         <div className='main-block'>
@@ -200,7 +189,7 @@ function Article({ articles, loading }: ArticleProps) {
                       <p className='article-info'>
                         <time>{date}</time>
                         <span>@{article.user.id}</span>
-                        <span>{article.likes_count}</span>
+                        <span>{article.likes_count}いいね</span>
                       </p>
                       <p className='article-tag'>
                         {article.tags.map((tag) => (
