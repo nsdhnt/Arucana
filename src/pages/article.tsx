@@ -1,14 +1,16 @@
-// Article.tsx の上部でPropsの型を定義
-interface ArticleProps {
-  articles: QiitaArticle[];
-  loading: boolean;
-}
+
+import type { QiitaArticle } from '../types/Qiita';
 
 import { useState } from 'react';
 import './article.css';
 import Header from "../components/Header";
 import sideDateArrow from "../assets/side-date-arrow.png";
 
+// Article.tsx の上部でPropsの型を定義
+interface ArticleProps {
+  articles: QiitaArticle[];
+  loading: boolean;
+}
 
 function Article({ articles, loading }: ArticleProps) {
   // キーワード検索

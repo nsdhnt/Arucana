@@ -1,23 +1,5 @@
-// Qiitaのタグの型
-interface QiitaTag {
-  name: string;
-}
 
-// Qiitaのユーザーの型
-interface QiitaUser {
-  id: string;
-}
-
-// 記事全体の型
-interface QiitaArticle {
-  id: string;
-  title: string;
-  url: string;
-  created_at: string;
-  likes_count: number;
-  user: QiitaUser;
-  tags: QiitaTag[];
-}
+import type { QiitaArticle } from './types/Qiita';
 
 
 import { useState, useEffect } from 'react';
