@@ -7,10 +7,6 @@ import navIconProduct from '../assets/nav-icon-product.png';
 
 function Header(){
   // const url = location.pathname;
-  function navChange(navName){
-    console.log(navName);
-  }
-  
   return(
     <>
       <header>
