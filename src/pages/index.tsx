@@ -18,7 +18,7 @@ function Index() {
       <Header />
       <main>
         <div className='container'>
-          <div className='about'>
+          <div className='card about'>
             <div className='block-name'>
               <p>ABOUT</p>
               <img src={rightAllow} alt="右矢印" />
@@ -26,21 +26,21 @@ function Index() {
             <img className='block-icon' src={blockIconAbout} alt="ABOUT" />
           </div>
 
-          <div className='product'>
+          <Link to="/product"  className='card product'>
             <div className='block-name'>
               <p>制作リスト</p>
               <img src={rightAllow} alt="右矢印" />
             </div>
             <img className='block-icon' src={blockIconProduct} alt="ABOUT" />
-          </div>
+          </Link>
 
-          <div className='account'>
+          <div className='card account'>
             <img src={accountIcon} alt="" />
             <p className='account-name'>@hinata_html</p>
             <p className='keep-article-num'>保存数<span> 48 </span>記事</p>
           </div>
 
-          <div className='usage'>
+          <div className='card usage'>
             <div className='block-name'>
               <p>使い方</p>
               <img src={rightAllow} alt="右矢印" />
@@ -48,17 +48,17 @@ function Index() {
             <img className='block-icon' src={blockIconUsage} alt="ABOUT" />
           </div>
 
-          <div className='article'>
-            <Link to="/article">
-              <div className='block-name'>
-                <p>記事一覧</p>
-                <img src={rightAllow} alt="右矢印" />
-              </div>
-              <img className='block-icon' src={blockIconArticle} alt="ABOUT" />
-            </Link>
-          </div>
+          <Link to="/article" className='card article'>
+            {/* <div className='article'> */}
+                <div className='block-name'>
+                  <p>記事一覧</p>
+                  <img src={rightAllow} alt="右矢印" />
+                </div>
+                <img className='block-icon' src={blockIconArticle} alt="ABOUT" />
+            {/* </div> */}
+          </Link>
 
-          <div className='data'>
+          <div className='card data'>
             <div className='block-name'>
               <p>データ</p>
               <img src={rightAllow} alt="右矢印" />
@@ -66,7 +66,7 @@ function Index() {
             <img className='block-icon' src={blockIconData} alt="ABOUT" />
           </div>
 
-          <div className='zenn'>
+          <div className='card zenn'>
             <div className='block-name'>
               <a href="https://zenn.dev/" target='_blank'>
                 <p>Zennへ</p>
@@ -75,7 +75,7 @@ function Index() {
             </div>
           </div>
 
-          <div className='qiita'>
+          <div className='card qiita'>
             <div className='block-name'>
               <a href="https://qiita.com/" target='_blank'>
                 <p>Qiitaへ</p>
@@ -84,7 +84,7 @@ function Index() {
             </div>
           </div>
 
-          <div className='logout'>
+          <div className='card logout'>
             <div className='block-name'>
               <p>ログアウト</p>
               <img src={rightAllow} alt="右矢印" />
