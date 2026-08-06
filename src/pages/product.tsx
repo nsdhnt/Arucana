@@ -1,6 +1,7 @@
 import "../pages/product.css";
 import Header from "../components/Header";
 import { useState } from "react";
+import { createPortal } from 'react-dom';
 
 interface Project {
   id: number;
@@ -8,7 +9,7 @@ interface Project {
 }
 
 function Product() {
-  const projects: Project[] = [
+  const [projects, setProjects] = useState<Project[]>([
     { id: 1, name: "Todoリスト" },
     { id: 2, name: "ポートフォリオ" },
     { id: 3, name: "カフェサイト" },
@@ -29,7 +30,7 @@ function Product() {
     { id: 18, name: "模写コーディング" },
     { id: 19, name: "React学習" },
     { id: 20, name: "JavaScript復習" },
-  ];
+  ]);
 
   const [selectedId, setSelectedId] = useState<number>(1)
 
@@ -38,8 +39,49 @@ function Product() {
     setSelectedId(id);
   }
 
+  const [menuPos, setMenuPos] = useState({
+    top: 0,
+    left: 0,
+  });
 
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+  // console.log(openMenuId);
+
+  const [editName, setEditName] = useState<string>("false");
+
+  const [editingId, setEditingId] = useState<number | null>(null);
+
+  function changeName() {
+    if(openMenuId !== null) {
+      setEditingId(openMenuId);
+      setOpenMenuId(null);
+    }
+  }
+
+  // function changeName(){
+  //   console.log(openMenuId);
+  //   // setEditName("true");
+  // }
+  // function changeName() {
+  //   const project = projects.find(
+  //     project => project.id === openMenuId
+  //   );
+
+  //   console.log(project?.name);
+  //   setProjects(
+  //     projects.map(project => {
+  //       if(project.id === openMenuId) {
+  //         return {
+  //           ...project,
+  //           name: "aaa"
+  //         }
+  //       }
+
+  //       return project;
+  //     })
+  //   );
+  // }
+
 
   // function openMenu(){
   //   console.log("open");
@@ -59,11 +101,28 @@ function Product() {
                   onClick={() => handleProjectClick(project.id)}
                   className={selectedId === project.id ? "active" : ""}
                 >
-                  <span className="project-name">{project.name}</span>
+                  {editingId === project.id ? (
+                    <input
+                      value={project.name}
+                    />
+                  ) : (
+                    <span className="project-name">
+                      {project.name}
+                    </span>
+                  )}
                   <button 
                     className="menu-btn"
                     onClick={(e) => {
                       e.stopPropagation();
+                      // console.log(project.id);
+
+                      const rect = e.currentTarget.getBoundingClientRect();
+
+                      setMenuPos({
+                        top: rect.bottom + window.scrollY,
+                        left: rect.left + window.scrollX,
+                      });
+
                       setOpenMenuId(
                         openMenuId === project.id ? null : project.id
                       );
@@ -71,16 +130,26 @@ function Product() {
                   >
                     <span></span>
                   </button>
-                  {openMenuId === project.id && (
-                    <div className="popup-menu">
-                      <button>＋ 記事を追加</button>
-                      <button>✏ 名前を変更</button>
-                      <button>🗑 削除</button>
-                    </div>
-                  )}
                 </li>
               ))}
             </ul>
+            {openMenuId !== null && (
+              createPortal(
+                <div 
+                  className="popup-menu"
+                  style={{
+                    position: "absolute",
+                    top: menuPos.top,
+                    left: menuPos.left,
+                  }}
+                >
+                  <button>記事を追加</button>
+                  <button onClick={() => changeName()}>名前を変更</button>
+                  <button>削除</button>
+                </div>,
+                document.body
+              )
+            )}
           </nav>
         </div>
         <div className="main-block">
