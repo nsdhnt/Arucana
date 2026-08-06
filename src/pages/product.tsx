@@ -47,17 +47,39 @@ function Product() {
   const [openMenuId, setOpenMenuId] = useState<number | null>(null);
   // console.log(openMenuId);
 
-  const [editName, setEditName] = useState<string>("false");
-
+  
   const [editingId, setEditingId] = useState<number | null>(null);
+  
+  const [editText, setEditText] = useState("");
 
   function changeName() {
     if(openMenuId !== null) {
       setEditingId(openMenuId);
       setOpenMenuId(null);
     }
+
+    const project = projects.find(project => project.id === openMenuId);
+
+    setEditText(project.name);
   }
 
+  function saveProjectName() {
+    setProjects(
+      projects.map(project => {
+        if(editingId === project.id) {
+          return {
+            ...project,
+            name: editText
+          }
+        }
+
+        return project;
+      })
+    );
+
+    setEditingId(null);
+  }
+  
   // function changeName(){
   //   console.log(openMenuId);
   //   // setEditName("true");
@@ -103,7 +125,9 @@ function Product() {
                 >
                   {editingId === project.id ? (
                     <input
-                      value={project.name}
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
+                      onBlur={saveProjectName}
                     />
                   ) : (
                     <span className="project-name">
