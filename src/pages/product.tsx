@@ -51,21 +51,35 @@ function Product() {
   const [editingId, setEditingId] = useState<number | null>(null);
   
   const [editText, setEditText] = useState("");
+  // console.log(editText);
+  
 
-  function changeName() {
+  // 名前を変更する ボタンを押された時
+  function changeName(id: number) {
+    setEditingId(id);
     if(openMenuId !== null) {
+      // メニューを開いたリストを編集対象に指定する
       setEditingId(openMenuId);
       setOpenMenuId(null);
     }
 
-    const project = projects.find(project => project.id === openMenuId);
+    const project = projects.find(project => project.id === id);
 
     setEditText(project.name);
   }
 
+  // プロジェクト名を保存
   function saveProjectName() {
+    // 編集していた文字が空なら、プロジェクト名を保存せずに編集を終了する
+    if(editText.trim() === "") {
+      setEditingId(null);
+      return;
+    }
+
+    // プロジェクト名を保存する
     setProjects(
       projects.map(project => {
+        // 編集中のリストだけ名前を変更する
         if(editingId === project.id) {
           return {
             ...project,
@@ -125,12 +139,24 @@ function Product() {
                 >
                   {editingId === project.id ? (
                     <input
+                      autoFocus
                       value={editText}
                       onChange={(e) => setEditText(e.target.value)}
                       onBlur={saveProjectName}
+                      onKeyDown={(e) => {
+                        if(e.key === "Enter") {
+                          saveProjectName();
+                        }
+                        else if(e.key === "Escape") {
+                          setEditingId(null);
+                        }
+                      }}
                     />
                   ) : (
-                    <span className="project-name">
+                    <span 
+                      className="project-name"
+                      onDoubleClick={() => changeName(project.id)}
+                    >
                       {project.name}
                     </span>
                   )}
@@ -168,7 +194,7 @@ function Product() {
                   }}
                 >
                   <button>記事を追加</button>
-                  <button onClick={() => changeName()}>名前を変更</button>
+                  <button onClick={() => changeName(openMenuId)}>名前を変更</button>
                   <button>削除</button>
                 </div>,
                 document.body
