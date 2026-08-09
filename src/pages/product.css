@@ -84,7 +84,26 @@ main{
               }
             }
           }
-
+          &:first-child{
+            background-color: #E5CEA5;
+            border-radius: 100px;
+            color: #381E00;
+            margin-bottom: 20px;
+            position: relative;
+            &::after{
+              position: absolute;
+              content: "";
+              /* content: url("../assets/add-product-btn.png"); */
+              width: 30px;
+              height: 30px;
+              top: 0;
+              right: 0;
+              transform: translate(-50%, 64%);
+              background: url("../assets/add-product-btn.png");
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
         }
       }
     }
