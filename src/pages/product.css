@@ -2,7 +2,10 @@ main{
   .side-bar{
     .product-nav{
       padding: 32px;
+      padding-bottom: 0;
       height: 100%;
+      /* background: url("../assets/wood.png");
+      opacity: 0.8; */
       /* border: solid 1px tomato; */
       ul{
         overflow-y: scroll;
@@ -13,13 +16,13 @@ main{
         li{
           list-style: none;
           width: 100%;
-          height: 67px;
+          height: 42px;
           margin-bottom: 10px;
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: 2rem;
-          font-weight: bold;
+          font-size: 1.4rem;
+          font-weight: normal;
           border-radius: 10px;
           cursor: pointer;
           /* border: solid 1px white; */
@@ -85,6 +88,9 @@ main{
             }
           }
           &:first-child{
+            height: 67px;
+            font-size: 2rem;
+            font-weight: bold;
             background-color: #E5CEA5;
             border-radius: 100px;
             color: #381E00;
@@ -108,6 +114,19 @@ main{
       }
     }
   }
+
+  /* .main-block{
+    background: url("../assets/wood.png");
+    background-size: contain;
+    background-color:rgba(255,255,255,0.3);
+    background-blend-mode:lighten;
+    .article-list{
+      background: url("../assets/wood.png");
+      background-size: contain;
+      background-color:rgba(255,255,255,0.3);
+      background-blend-mode:lighten;
+    }
+  } */
 }
 
 .popup-menu{
