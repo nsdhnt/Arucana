@@ -1,6 +1,6 @@
 import "../pages/product.css";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from 'react-dom';
 
 interface Project {
@@ -9,28 +9,43 @@ interface Project {
 }
 
 function Product() {
-  const [projects, setProjects] = useState<Project[]>([
-    { id: 1, name: "Todoリスト" },
-    { id: 2, name: "ポートフォリオ" },
-    { id: 3, name: "カフェサイト" },
-    { id: 4, name: "ECサイト" },
-    { id: 5, name: "天気予報アプリ" },
-    { id: 6, name: "チャットアプリ" },
-    { id: 7, name: "家計簿アプリ" },
-    { id: 8, name: "タスク管理アプリ" },
-    { id: 9, name: "スケジュール管理" },
-    { id: 10, name: "レシピ検索サイト" },
-    { id: 11, name: "映画レビューサイト" },
-    { id: 12, name: "ブログサイト" },
-    { id: 13, name: "SNSクローン" },
-    { id: 14, name: "旅行予約サイト" },
-    { id: 15, name: "音楽プレイヤー" },
-    { id: 16, name: "メモアプリ" },
-    { id: 17, name: "掲示板サイト" },
-    { id: 18, name: "模写コーディング" },
-    { id: 19, name: "React学習" },
-    { id: 20, name: "JavaScript復習" },
-  ]);
+  const [projects, setProjects] = useState<Project[]>(() => {
+    const savedProjects = localStorage.getItem("projects");
+
+    if(savedProjects) {
+      return JSON.parse(savedProjects);
+    }
+
+    return [
+      { id: 1, name: "Todoリスト" },
+      { id: 2, name: "ポートフォリオ" },
+      { id: 3, name: "カフェサイト" },
+      { id: 4, name: "ECサイト" },
+      { id: 5, name: "天気予報アプリ" },
+      { id: 6, name: "チャットアプリ" },
+      { id: 7, name: "家計簿アプリ" },
+      { id: 8, name: "タスク管理アプリ" },
+      { id: 9, name: "スケジュール管理" },
+      { id: 10, name: "レシピ検索サイト" },
+      { id: 11, name: "映画レビューサイト" },
+      { id: 12, name: "ブログサイト" },
+      { id: 13, name: "SNSクローン" },
+      { id: 14, name: "旅行予約サイト" },
+      { id: 15, name: "音楽プレイヤー" },
+      { id: 16, name: "メモアプリ" },
+      { id: 17, name: "掲示板サイト" },
+      { id: 18, name: "模写コーディング" },
+      { id: 19, name: "React学習" },
+      { id: 20, name: "JavaScript復習" },
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "projects",
+      JSON.stringify(projects)
+    );
+  }, [projects]);
 
   const [selectedId, setSelectedId] = useState<number>(1)
 
