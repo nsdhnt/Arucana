@@ -281,7 +281,7 @@ function Product() {
         <div className="side-bar">
           <nav className="product-nav">
             <ul>
-              <li>新しい制作物</li>
+              {/* <li>新しい制作物</li> */}
               {projects.map((project) => (
                 <li 
                   key={project.id} 
