@@ -5,9 +5,10 @@ import type { QiitaArticle } from './types/Qiita';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';import './App.css'
 import Index from './pages/index.tsx';
-import Article from './pages/article.tsx';
-import Data from './pages/data.tsx';
-import Product from './pages/product.tsx';
+import Search from './pages/search.tsx';
+import Project from './pages/project.tsx';
+import Memo from './pages/memo.tsx';
+import History from './pages/history.tsx';
 
 function App() {
   // 取得したデータを保存するstate
@@ -52,9 +53,10 @@ function App() {
       <Route path="/" element={<Index />} />
       <Route 
         path="/article" 
-        element={<Article articles={articles} loading={loading} />} />
-      <Route path="/data" element={<Data />} />
-      <Route path="/product" element={<Product />} />
+        element={<Search articles={articles} loading={loading} />} />
+      <Route path="/product" element={<Project />} />
+      <Route path="/memo" element={<Memo />} />
+      <Route path="/history" element={<History />} />
     </Routes>
   )
 }
