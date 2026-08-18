@@ -2,7 +2,7 @@
 import type { QiitaArticle } from '../types/Qiita';
 
 import { useState } from 'react';
-import './article.css';
+import './search.css';
 import Header from "../components/Header";
 import sideDateArrow from "../assets/side-date-arrow.png";
 

@@ -1,8 +1,8 @@
-import "../pages/data.css";
+import "../pages/history.css";
 import Header from "../components/Header";
 
 
-function Data() {
+function History() {
   return(
     <>
       <Header />
@@ -10,4 +10,4 @@ function Data() {
   )
 }
 
-export default Data
+export default History

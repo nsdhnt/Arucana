@@ -1,4 +1,4 @@
-import "../pages/product.css";
+import "../pages/project.css";
 import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { createPortal } from 'react-dom';
