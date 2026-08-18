@@ -3,40 +3,167 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { createPortal } from 'react-dom';
 
+interface Article {
+  id: string;
+  title: string;
+  url: string;
+  created_at: string;
+  likes_count: number;
+  user: {
+    id: string;
+  };
+  tags: {
+    name: string;
+  }[];
+}
+
 interface Project {
   id: number;
   name: string;
+  articles: Article[];
 }
 
 function Product() {
   const [projects, setProjects] = useState<Project[]>(() => {
+    
     const savedProjects = localStorage.getItem("projects");
-
+    
     if(savedProjects) {
       return JSON.parse(savedProjects);
     }
-
+    
     return [
-      { id: 1, name: "Todoリスト" },
-      { id: 2, name: "ポートフォリオ" },
-      { id: 3, name: "カフェサイト" },
-      { id: 4, name: "ECサイト" },
-      { id: 5, name: "天気予報アプリ" },
-      { id: 6, name: "チャットアプリ" },
-      { id: 7, name: "家計簿アプリ" },
-      { id: 8, name: "タスク管理アプリ" },
-      { id: 9, name: "スケジュール管理" },
-      { id: 10, name: "レシピ検索サイト" },
-      { id: 11, name: "映画レビューサイト" },
-      { id: 12, name: "ブログサイト" },
-      { id: 13, name: "SNSクローン" },
-      { id: 14, name: "旅行予約サイト" },
-      { id: 15, name: "音楽プレイヤー" },
-      { id: 16, name: "メモアプリ" },
-      { id: 17, name: "掲示板サイト" },
-      { id: 18, name: "模写コーディング" },
-      { id: 19, name: "React学習" },
-      { id: 20, name: "JavaScript復習" },
+      {
+        id: 1, 
+        name: "Todoリスト", 
+        articles: [
+          {
+            id: "article-001",
+            title: "Reactの基本を学ぶ",
+            url: "https://example.com",
+            created_at: "2026-08-18",
+            likes_count: 10,
+            user: {
+              id: "test-user"
+            },
+            tags: [
+              {
+                name: "React"
+              }
+            ]
+          }, 
+          {
+            id: "article-001",
+            title: "Reactの基本を学ぶ",
+            url: "https://example.com",
+            created_at: "2026-08-18",
+            likes_count: 10,
+            user: {
+              id: "test-user"
+            },
+            tags: [
+              {
+                name: "React"
+              }
+            ]
+          }, 
+        ]
+      },
+      {
+        id: 2, 
+        name: "ポートフォリオ", 
+        articles: []
+      },
+      {
+        id: 3, 
+        name: "カフェサイト", 
+        articles: []
+      },
+      {
+        id: 4, 
+        name: "ECサイト", 
+        articles: []
+      },
+      {
+        id: 5, 
+        name: "天気予報アプリ",
+        articles: []
+      },
+      {
+        id: 6, 
+        name: "チャットアプリ",
+        articles: []
+      },
+      { 
+        id: 7, 
+        name: "家計簿アプリ",
+        articles: []
+      },
+      { 
+        id: 8, 
+        name: "タスク管理アプリ", 
+        articles: []
+      },
+      { 
+        id: 9, 
+        name: "スケジュール管理", 
+        articles: []
+      },
+      { 
+        id: 10, 
+        name: "レシピ検索サイト", 
+        articles: []
+      },
+      { 
+        id: 11, 
+        name: "映画レビューサイト", 
+        articles: []
+      },
+      { 
+        id: 12, 
+        name: "ブログサイト", 
+        articles: []
+      },
+      { 
+        id: 13, 
+        name: "SNSクローン", 
+        articles: []
+      },
+      { 
+        id: 14, 
+        name: "旅行予約サイト", 
+        articles: []
+      },
+      { 
+        id: 15, 
+        name: "音楽プレイヤー", 
+        articles: []
+      },
+      { 
+        id: 16, 
+        name: "メモアプリ", 
+        articles: []
+      },
+      { 
+        id: 17, 
+        name: "掲示板サイト", 
+        articles: []
+      },
+      { 
+        id: 18, 
+        name: "模写コーディング", 
+        articles: []
+      },
+      { 
+        id: 19, 
+        name: "React学習", 
+        articles: []
+      },
+      { 
+        id: 20, 
+        name: "JavaScript復習", 
+        articles: []
+      },
     ];
   });
 
@@ -46,6 +173,8 @@ function Product() {
       JSON.stringify(projects)
     );
   }, [projects]);
+  console.log(projects);
+  
 
   const [selectedId, setSelectedId] = useState<number>(1)
 
@@ -139,6 +268,12 @@ function Product() {
     
   // }
 
+  const selectedProject = projects.find(
+    project => project.id === selectedId
+  );
+  console.log(selectedProject);
+
+
   return(
     <>
       <Header />
@@ -220,7 +355,27 @@ function Product() {
         </div>
         <div className="main-block">
           <div className="article-list">
-            <article className='article-content'>
+            {selectedProject.articles.map((article, index) => {
+              return (
+                <article className='article-content' key={article.id}>
+                  <a href={article.url} target='_blank' rel="noopener noreferrer">
+                    <h1>{String(index + 1).padStart(2, '0')}</h1>
+                    <p className='article-title'>{article.title}</p>
+                    <p className='article-info'>
+                      <time>{article.created_at}</time>
+                      <span>@{article.user.id}</span>
+                      <span>{article.likes_count}いいね</span>
+                    </p>
+                    <p className='article-tag'>
+                      {article.tags.map((tag) => (
+                        <span key={tag.name}>{tag.name}</span>
+                      ))}
+                    </p>
+                  </a>
+                </article>
+              )
+            })}
+            {/* <article className='article-content'>
               <a href="#">
                 <h1>01</h1>
                 <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
@@ -233,7 +388,7 @@ function Product() {
                   <span>CSS</span>
                 </p>
               </a>
-            </article>
+            </article> */}
           </div>
         </div>
       </main>
