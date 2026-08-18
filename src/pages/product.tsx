@@ -72,7 +72,23 @@ function Product() {
       {
         id: 2, 
         name: "ポートフォリオ", 
-        articles: []
+        articles: [
+          {
+            id: "article-001",
+            title: "Reactの基本を学ぶ",
+            url: "https://example.com",
+            created_at: "2026-08-18",
+            likes_count: 10,
+            user: {
+              id: "test-user"
+            },
+            tags: [
+              {
+                name: "React"
+              }
+            ]
+          }, 
+        ]
       },
       {
         id: 3, 
@@ -277,7 +293,7 @@ function Product() {
   return(
     <>
       <Header />
-      <main>
+      <main onClick={() => setOpenMenuId(null)}>
         <div className="side-bar">
           <nav className="product-nav">
             <ul>
