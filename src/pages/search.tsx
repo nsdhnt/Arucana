@@ -4,6 +4,8 @@ import type { QiitaArticle } from '../types/Qiita';
 import { useState } from 'react';
 import './search.css';
 import Header from "../components/Header";
+import logo from "../assets/logo.png";
+import sidebarIcon from "../assets/sidebar-icon.png";
 import sideDateArrow from "../assets/side-date-arrow.png";
 
 // Article.tsx の上部でPropsの型を定義
@@ -13,6 +15,9 @@ interface ArticleProps {
 }
 
 function Article({ articles, loading }: ArticleProps) {
+  // サイドバー
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+
   // キーワード検索
   const [keyword, setKeyword] = useState<string>("");
 
@@ -114,8 +119,17 @@ function Article({ articles, loading }: ArticleProps) {
     <>
       <Header />
       <main>
-        <div className='side-bar'>
+        <div className={`side-bar ${isSidebarOpen ? "" : "close"}`}>
           <div className='filter-wrap'>
+            <div className='bar-top'>
+              <img className='logo' src={logo} alt="ロゴ" />
+              <div 
+                className='sidebar-btn' 
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              >
+                <img src={sidebarIcon} alt="折りたたみボタン" />
+              </div>
+            </div>
             <input type="search" name="" id="" placeholder='キーワードで検索する'
               value={keyword}
               onChange={handleKeyword}
@@ -167,7 +181,7 @@ function Article({ articles, loading }: ArticleProps) {
               </div>
             </section>
           </div>
-          <div className='button-wrap'>
+          <div className={`button-wrap ${isSidebarOpen ? "" : "close"}`}>
             <button type="button">条件をクリア</button>
             <button type="button">{filteredArticles.length}件を表示</button>
           </div>

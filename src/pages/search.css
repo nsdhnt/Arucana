@@ -13,11 +13,52 @@ main{
     color: white;
     /* position: relative; */
     transform: none;
+    transition: 0.3s;
+    &.close{
+      width: 60px;
+      .filter-wrap{
+        padding-inline: 10px;
+      }
+      .bar-top>.logo,
+      input,
+      section,
+      .tag,
+      .date,
+      .display-order{
+        display: none;
+      }
+    }
     .filter-wrap{
       padding-inline: 22px;
       padding-top: 18px;
       padding-bottom: 158px;
       /* border: solid 1px skyblue; */
+      .bar-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 30px;
+        .logo{
+          width: 150px;
+        }
+        .sidebar-btn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          transition: 0.3s;
+          img{
+            width: 70%;
+          }
+          &:hover{
+            /* filter: brightness(1.5); */
+            background-color: #572f01;
+          }
+        }
+      }
       input{
         width: 100%;
         height: 37px;
@@ -153,6 +194,9 @@ main{
       background-color: #381E00;
       background: linear-gradient(to bottom, #381E0033 0%, #381E00 10%);
       /* border: solid 1px tomato; */
+      &.close{
+        display: none;
+      }
       button{
         width: 164px;
         height: 56px;
