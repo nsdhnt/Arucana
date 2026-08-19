@@ -15,7 +15,7 @@ interface ArticleProps {
 }
 
 function Article({ articles, loading }: ArticleProps) {
-  // サイドバー
+  // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   // キーワード検索

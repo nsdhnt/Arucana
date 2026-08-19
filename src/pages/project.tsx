@@ -3,6 +3,9 @@ import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { createPortal } from 'react-dom';
 
+import logo from "../assets/logo.png";
+import sidebarIcon from "../assets/sidebar-icon.png";
+
 interface Article {
   id: string;
   title: string;
@@ -24,6 +27,9 @@ interface Project {
 }
 
 function Product() {
+  // サイドバー折りたたみ
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+
   const [projects, setProjects] = useState<Project[]>(() => {
     
     const savedProjects = localStorage.getItem("projects");
@@ -294,7 +300,17 @@ function Product() {
     <>
       <Header />
       <main onClick={() => setOpenMenuId(null)}>
-        <div className="side-bar">
+        <div className={`side-bar ${isSidebarOpen ? "" : "close"}`}>
+          <div className='project-bar-top'>
+            <img className='logo' src={logo} alt="ロゴ" />
+            <div 
+              className='sidebar-btn' 
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              <img src={sidebarIcon} alt="折りたたみボタン" />
+            </div>
+          </div>
+
           <nav className="product-nav">
             <ul>
               {/* <li>新しい制作物</li> */}
