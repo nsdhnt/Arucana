@@ -1,6 +1,7 @@
 import './index.css';
 import Header from '../components/Header.tsx';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import rightAllow from '../assets/right-allow.png';
 import blockIconAbout from '../assets/block-icon-about.png';
@@ -13,9 +14,15 @@ import accountIcon from '../assets/account-icon.png';
 
 
 function Index() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
+
+  console.log(isSidebarOpen);
+  console.log(isMobileSidebarOpen);
+
   return (
     <>
-      <Header />
+      <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main>
         <div className='container'>
           <div className='card about'>
