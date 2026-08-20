@@ -8,13 +8,15 @@ main{
         position: fixed;
         display: block;
         z-index: 100;
-        .project-bar-top{
+        .bar-top{
           .sidebar-btn{
             display: none;
           }
         }
-        .main-block{
-          filter: brightness(0.7);
+        .project-bar-top{
+          .sidebar-btn{
+            display: none;
+          }
         }
       }
     }
