@@ -5,12 +5,28 @@ import navIconSearch from '../assets/nav-icon-search.png';
 import navIconProject from '../assets/nav-icon-project.png';
 import navIconMemo from '../assets/nav-icon-memo.png';
 import navIconHistory from '../assets/nav-icon-history.png';
+// import { useState } from 'react';
 
-function Header(){
+// propsの受け取り
+interface HeaderProps {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isMobileSidebarOpen: boolean;
+  setIsMobileSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Header({ setIsSidebarOpen, setIsMobileSidebarOpen }: HeaderProps){
   // const url = location.pathname;
+
   return(
     <>
       <header>
+        <div 
+          className='mobile-sidebar-btn'
+          onClick={() => setIsMobileSidebarOpen(prev => !prev)}
+        >
+          <span></span>
+        </div>
         <nav>
           <NavLink 
             to="/" 
