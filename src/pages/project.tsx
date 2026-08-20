@@ -299,7 +299,7 @@ function Product() {
 
   return(
     <>
-      <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
+      <Header setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main onClick={() => setOpenMenuId(null)}>
         <div className={
           `side-bar 
