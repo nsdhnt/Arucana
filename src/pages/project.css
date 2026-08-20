@@ -1,5 +1,37 @@
 main{
+  @media (max-width: 767px) {
+    .side-bar{
+      /* position: fixed; */
+      display: none;
+      transition: 0.3s;
+      &.open{
+        position: fixed;
+        display: block;
+        z-index: 100;
+        .project-bar-top{
+          .sidebar-btn{
+            display: none;
+          }
+        }
+        .main-block{
+          filter: brightness(0.7);
+        }
+      }
+    }
+
+    .sidebar-overlay{
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px);
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 90;
+    }
+    /* border: solid 1px tomato; */
+  }
   .side-bar{
+    position: static;
     &.close{
       .project-bar-top{
         padding-inline: 10px;
@@ -29,6 +61,7 @@ main{
         height: 40px;
         border-radius: 10px;
         transition: 0.3s;
+        cursor: pointer;
         img{
           width: 70%;
         }

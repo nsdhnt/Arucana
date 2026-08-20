@@ -29,6 +29,7 @@ interface Project {
 function Product() {
   // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
 
   const [projects, setProjects] = useState<Project[]>(() => {
     
@@ -298,9 +299,13 @@ function Product() {
 
   return(
     <>
-      <Header />
+      <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main onClick={() => setOpenMenuId(null)}>
-        <div className={`side-bar ${isSidebarOpen ? "" : "close"}`}>
+        <div className={
+          `side-bar 
+          ${isSidebarOpen ? "" : "close"} 
+          ${isMobileSidebarOpen ? "open" : ""}`
+        }>
           <div className='project-bar-top'>
             <img className='logo' src={logo} alt="ロゴ" />
             <div 
@@ -385,6 +390,11 @@ function Product() {
             )}
           </nav>
         </div>
+
+        {isMobileSidebarOpen && (
+          <div className="sidebar-overlay"></div>
+        )}
+
         <div className="main-block">
           <div className="article-list">
             {selectedProject.articles.map((article, index) => {
