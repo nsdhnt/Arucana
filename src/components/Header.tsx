@@ -9,13 +9,13 @@ import navIconHistory from '../assets/nav-icon-history.png';
 
 // propsの受け取り
 interface HeaderProps {
-  isSidebarOpen: boolean;
+  // isSidebarOpen: boolean;
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isMobileSidebarOpen: boolean;
+  // isMobileSidebarOpen: boolean;
   setIsMobileSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Header({ setIsSidebarOpen, setIsMobileSidebarOpen }: HeaderProps){
+function Header({ setIsMobileSidebarOpen }: HeaderProps){
   // const url = location.pathname;
 
   return(

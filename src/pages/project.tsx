@@ -232,7 +232,10 @@ function Product() {
 
     const project = projects.find(project => project.id === id);
 
-    setEditText(project.name);
+    // TypeScriptエラー回避のため存在確認を追加
+    if (project) {
+      setEditText(project.name);
+    }
   }
 
   // プロジェクト名を保存
@@ -299,7 +302,7 @@ function Product() {
 
   return(
     <>
-      <Header setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
+      <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main onClick={() => setOpenMenuId(null)}>
         <div className={
           `side-bar 
@@ -397,7 +400,8 @@ function Product() {
 
         <div className="main-block">
           <div className="article-list">
-            {selectedProject.articles.map((article, index) => {
+            {/* selectedProject?.articles に変更して undefined エラーを回避 */}
+            {selectedProject?.articles.map((article, index) => {
               return (
                 <article className='article-content' key={article.id}>
                   <a href={article.url} target='_blank' rel="noopener noreferrer">

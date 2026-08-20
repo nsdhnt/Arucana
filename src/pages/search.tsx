@@ -118,7 +118,7 @@ function Article({ articles, loading }: ArticleProps) {
 
   return(
     <>
-      <Header setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
+      <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main>
         <div className={
           `side-bar 
