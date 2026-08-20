@@ -17,6 +17,7 @@ interface ArticleProps {
 function Article({ articles, loading }: ArticleProps) {
   // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
 
   // キーワード検索
   const [keyword, setKeyword] = useState<string>("");
@@ -117,9 +118,13 @@ function Article({ articles, loading }: ArticleProps) {
 
   return(
     <>
-      <Header />
+      <Header setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main>
-        <div className={`side-bar ${isSidebarOpen ? "" : "close"}`}>
+        <div className={
+          `side-bar 
+          ${isSidebarOpen ? "" : "close"}
+          ${isMobileSidebarOpen ? "open" : ""}`
+        }>
           <div className='filter-wrap'>
             <div className='bar-top'>
               <img className='logo' src={logo} alt="ロゴ" />
@@ -186,6 +191,11 @@ function Article({ articles, loading }: ArticleProps) {
             <button type="button">{filteredArticles.length}件を表示</button>
           </div>
         </div>
+
+        {isMobileSidebarOpen && (
+          <div className="sidebar-overlay"></div>
+        )}
+
         <div className='main-block'>
           <div className='article-list'>
             {loading ? (
