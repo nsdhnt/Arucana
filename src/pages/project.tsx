@@ -395,7 +395,10 @@ function Product() {
         </div>
 
         {isMobileSidebarOpen && (
-          <div className="sidebar-overlay"></div>
+          <div 
+            className="sidebar-overlay"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          ></div>
         )}
 
         <div className="main-block">
