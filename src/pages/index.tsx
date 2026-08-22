@@ -24,62 +24,38 @@ function Index() {
     <>
       <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main>
-        <div className="bookshelf">
-
-          <div className="bookshelf-left">
-
-            <h2>保存した記事を探す</h2>
-
-            <div className="shelf">
-              <div className="shelf-item">
-                <p>検索で探す</p>
+        <div className='book-shelf'>
+          <div className='shelf-content-left'>
+            <div className="shelf-saved-article">
+              <h2>保存した記事を探す</h2>
+              <div className="shelf-content">
+                <a href="">検索で探す</a>
               </div>
-
-              <div className="shelf-item">
-                <p>プロジェクトから探す</p>
+              <div className="shelf-content">
+                <a href="">プロジェクトから探す</a>
               </div>
-
-              <div className="shelf-item">
-                <p>メモから探す</p>
+              <div className="shelf-content">
+                <a href="">メモから探す</a>
               </div>
-
-              <div className="shelf-item">
-                <p>履歴から探す</p>
+              <div className="shelf-content">
+                <a href="">履歴から探す</a>
               </div>
             </div>
-
-
-            <h2>新しい記事を探す</h2>
-
-            <div className="shelf">
-              <div className="shelf-item">
-                <p>Qiita</p>
+            <div className="shelf-new-article">
+              <h2>新しい記事を探す</h2>
+              <div className="shelf-content">
+                <a href=""></a>
               </div>
-
-              <div className="shelf-item">
-                <p>Zenn</p>
+              <div className="shelf-content">
+                <a href=""></a>
               </div>
-            </div>
-
-          </div>
-
-
-          <div className="recent-articles">
-            <h2>最近追加した記事</h2>
-
-            <div className="article">
-              01　【Tailwind CSS入門 Day16】詳細モーダルを作る
-            </div>
-
-            <div className="article">
-              02　【Tailwind CSS入門 Day16】詳細モーダルを作る
-            </div>
-
-            <div className="article">
-              03　【Tailwind CSS入門 Day16】詳細モーダルを作る
             </div>
           </div>
-
+          <div className='shelf-content-right'>
+            <div className="shelf-add-article">
+              <h2>最近追加した記事</h2>
+            </div>
+          </div>
         </div>
       </main>
     </>
