@@ -1,6 +1,6 @@
 import './index.css';
 import Header from '../components/Header.tsx';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 // import rightAllow from '../assets/right-allow.png';
@@ -28,9 +28,9 @@ function Index() {
           <div className='shelf-content-left'>
             <div className="shelf-saved-article">
               <h2>保存した記事を探す</h2>
-              <div className="shelf-content">
+              <Link to="/search" className="shelf-content">
                 <a href="">検索で探す</a>
-              </div>
+              </Link>
               <div className="shelf-content">
                 <a href="">プロジェクトから探す</a>
               </div>
