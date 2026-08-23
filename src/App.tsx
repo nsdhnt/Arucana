@@ -52,7 +52,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route 
-        path="/article" 
+        path="/search" 
         element={<Search articles={articles} loading={loading} />} />
       <Route path="/product" element={<Project />} />
       <Route path="/memo" element={<Memo />} />
