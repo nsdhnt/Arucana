@@ -31,9 +31,9 @@ function Index() {
               <Link to="/search" className="shelf-content">
                 <a href="">検索で探す</a>
               </Link>
-              <div className="shelf-content">
+              <Link to="/project" className="shelf-content">
                 <a href="">プロジェクトから探す</a>
-              </div>
+              </Link>
               <div className="shelf-content">
                 <a href="">メモから探す</a>
               </div>

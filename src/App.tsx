@@ -54,7 +54,7 @@ function App() {
       <Route 
         path="/search" 
         element={<Search articles={articles} loading={loading} />} />
-      <Route path="/product" element={<Project />} />
+      <Route path="/project" element={<Project />} />
       <Route path="/memo" element={<Memo />} />
       <Route path="/history" element={<History />} />
     </Routes>

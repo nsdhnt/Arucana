@@ -43,7 +43,7 @@ function Header({ setIsMobileSidebarOpen }: HeaderProps){
             <p>検索</p>
           </NavLink>
           <NavLink 
-            to="/product" 
+            to="/project" 
             className={({isActive}) => isActive ? "nav-link active" : "nav-link"}
           >
             <img src={navIconProject} alt="プロジェクト" />
