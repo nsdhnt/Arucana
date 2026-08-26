@@ -49,16 +49,16 @@ function Index() {
                   </Link>
                 </div>
                 <div className='shelf-content'>
-                  <div className="page-link">
+                  <Link to="/memo" className="page-link">
                     <img src={linkIconMemo} alt="メモページリンク" />
                     <p>メモから探す</p>
-                  </div>
+                  </Link>
                 </div>
                 <div className='shelf-content'>
-                  <div className="page-link">
+                  <Link to="/history" className="page-link">
                     <img src={linkIconHistory} alt="履歴ページリンク" />
                     <p>履歴から探す</p>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@ function Index() {
           </div>
           <div className='shelf-content-right'>
             <div className="shelf-add-article">
-              <h2>最近追加した記事</h2>
+              <h2>制作中のプロジェクト</h2>
             </div>
           </div>
         </div>
