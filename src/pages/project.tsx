@@ -26,7 +26,7 @@ interface Project {
   articles: Article[];
 }
 
-function Product() {
+function Project() {
   // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
@@ -445,4 +445,4 @@ function Product() {
   )
 }
 
-export default Product
+export default Project
