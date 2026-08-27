@@ -1,0 +1,37 @@
+.book-shelf{
+  .shelf-content-left{
+    .ranking{
+      background-color: #381E00;
+      padding-bottom: 24px;
+      .shelf-wrap{
+        /* display: flex;
+        flex-direction: column;
+        gap: 24px; */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        .shelf-content{
+          height: 190px;
+          background-color: #E5CEA5;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          a{
+            display: block;
+            width: 92%;
+            height: 80%;
+            border-radius: 10px;
+            background-color: #fff;
+          }
+          &:first-child{
+            grid-column: 1 / -1;
+            height: 166px;
+            a{
+              width: 96%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
