@@ -21,7 +21,7 @@ function History() {
               <div className="shelf-wrap">
                 <article className='shelf-content'>
                   <a href="#">
-                    <p>1</p>
+                    <p className="ranking-id">1</p>
                     <div>
                       <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
                       <p className='article-info'>
@@ -29,13 +29,13 @@ function History() {
                         <span>@honda-dev-jp</span>
                         <span>128</span>
                       </p>
-                      <p>開いた回数 72回</p>
+                      <p className="count">開いた回数 <span>72</span> 回</p>
                     </div>
                   </a>
                 </article>
                 <article className='shelf-content'>
                   <a href="#">
-                    <p>2</p>
+                    <p className="ranking-id">2</p>
                     <div>
                       <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
                       <p className='article-info'>
@@ -43,13 +43,13 @@ function History() {
                         <span>@honda-dev-jp</span>
                         <span>128</span>
                       </p>
-                      <p>開いた回数 72回</p>
+                      <p className="count">開いた回数 <span>72</span> 回</p>
                     </div>
                   </a>
                 </article>
                 <article className='shelf-content'>
                   <a href="#">
-                    <p>3</p>
+                    <p className="ranking-id">3</p>
                     <div>
                       <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
                       <p className='article-info'>
@@ -57,13 +57,13 @@ function History() {
                         <span>@honda-dev-jp</span>
                         <span>128</span>
                       </p>
-                      <p>開いた回数 72回</p>
+                      <p className="count">開いた回数 <span>72</span> 回</p>
                     </div>
                   </a>
                 </article>
                 <article className='shelf-content'>
                   <a href="#">
-                    <p>4</p>
+                    <p className="ranking-id">4</p>
                     <div>
                       <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
                       <p className='article-info'>
@@ -71,13 +71,13 @@ function History() {
                         <span>@honda-dev-jp</span>
                         <span>128</span>
                       </p>
-                      <p>開いた回数 72回</p>
+                      <p className="count">開いた回数 <span>72</span> 回</p>
                     </div>
                   </a>
                 </article>
                 <article className='shelf-content'>
                   <a href="#">
-                    <p>5</p>
+                    <p className="ranking-id">5</p>
                     <div>
                       <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
                       <p className='article-info'>
@@ -85,14 +85,16 @@ function History() {
                         <span>@honda-dev-jp</span>
                         <span>128</span>
                       </p>
-                      <p>開いた回数 72回</p>
+                      <p className="count">開いた回数 <span>72</span> 回</p>
                     </div>
                   </a>
                 </article>
               </div>
             </div>
           </div>
-          <div className="shelf-content-right"></div>
+          <div className="shelf-content-right">
+            <h2>閲覧履歴</h2>
+          </div>
         </div>
       </main>
     </>
