@@ -79,8 +79,18 @@ function Index() {
             </div>
           </div>
           <div className='shelf-content-right'>
-            <div className="shelf-add-article">
-              <h2>制作中のプロジェクト</h2>
+            <div className="shelf-pinned-article">
+              <h2>ピン留めしたプロジェクト</h2>
+              <div className='pinned-list'>
+                <div className='pinned-project'>
+                  <h3>Todoリスト</h3>
+                  <p>関連記事 <span>12</span> 件</p>
+                </div>
+                <div className='pinned-project'>
+                  <h3>天気予報アプリ</h3>
+                  <p>関連記事 <span>6</span> 件</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
