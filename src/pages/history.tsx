@@ -101,7 +101,7 @@ function History() {
                 <p className='article-info'>
                   <time>2026/5/26</time>
                   <span>@honda-dev-jp</span>
-                  <span>128</span>
+                  <span>128いいね</span>
                 </p>
                 <p className='article-tag'>
                   <span>CSS</span>
@@ -115,7 +115,7 @@ function History() {
                 <p className='article-info'>
                   <time>2026/5/26</time>
                   <span>@sen-ltd</span>
-                  <span>128</span>
+                  <span>128いいね</span>
                 </p>
               </a>
             </article>
