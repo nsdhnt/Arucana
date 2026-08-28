@@ -72,7 +72,7 @@ header{
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     /* .mobile-sidebar-btn{
       display: block;
     } */
@@ -84,7 +84,7 @@ header{
       }
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     justify-content: right;
     .mobile-sidebar-btn{
       display: none;
