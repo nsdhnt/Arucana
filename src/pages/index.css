@@ -163,10 +163,11 @@
     .shelf-content-left {
       .shelf-saved-article {
         .shelf-wrap {
+          grid-template-columns: 1fr;
           .shelf-content {
             .page-link {
               p {
-                font-size: 1.4rem;
+                /* font-size: 1.4rem; */
                 text-align: center;
               }
             }
