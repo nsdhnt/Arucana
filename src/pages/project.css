@@ -1,5 +1,5 @@
 main{
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .side-bar{
       /* position: fixed; */
       display: none;
