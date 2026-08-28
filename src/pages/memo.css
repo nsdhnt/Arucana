@@ -2,10 +2,10 @@
   width: 70%;
   height: 100%;
   margin: 0 auto;
-  padding: 0 40px;
-  background-color: #381E00;
+  border-inline: solid 40px #381E00;
+  background-color: #E5CEA5;
   display: flex;
-  gap: 24px;
+  /* gap: 24px; */
   flex-direction: column;
   .memo-shelf {
     list-style: none;
