@@ -1,0 +1,44 @@
+.memo-shelf-list {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  background-color: #381E00;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  .memo-shelf {
+    list-style: none;
+    width: 100%;
+    height: fit-content;
+    padding: 24px;
+    background-color: #E5CEA5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .memo-content {
+      width: 100%;
+      height: fit-content;
+      padding: 0 10px;
+      padding-bottom: 10px;
+      border-radius: 10px;
+      background-color: #fff;
+      font-size: 1.4rem;
+      h3 {
+        padding-top: 20px;
+        padding-bottom: 10px;
+        border-bottom: solid 1px black;
+      }
+      .memo-txt {
+        padding: 14px 0;
+      }
+      .memo-date {
+        width: fit-content;
+        padding: 4px 10px;
+        border-radius: 4px;
+        color: #fff;
+        background-color: #00375B;
+      }
+    }
+  }
+}
