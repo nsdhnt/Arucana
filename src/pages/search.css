@@ -246,8 +246,13 @@ main{
           &:hover{
             transform: translateX(10px);
             /* background-color: #381e004e; */
-            color: #005D9B;
-            border-left: solid 2px #005D9B;
+            color: #00375B;
+            border-left: solid 2px #00375B;
+            .article-tag {
+              span {
+                background-color: #00375B;
+              }
+            }
           }
           h1{
             font-size: 2.4rem;
