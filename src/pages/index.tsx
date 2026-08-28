@@ -83,12 +83,16 @@ function Index() {
               <h2>ピン留めしたプロジェクト</h2>
               <div className='pinned-list'>
                 <div className='pinned-project'>
-                  <h3>Todoリスト</h3>
-                  <p>関連記事 <span>12</span> 件</p>
+                  <div className='project-content'>
+                    <h3>Todoリスト</h3>
+                    <p>関連記事 <span>12</span> 件</p>
+                  </div>
                 </div>
                 <div className='pinned-project'>
-                  <h3>天気予報アプリ</h3>
-                  <p>関連記事 <span>6</span> 件</p>
+                  <div className='project-content'>
+                    <h3>天気予報アプリ</h3>
+                    <p>関連記事 <span>6</span> 件</p>
+                  </div>
                 </div>
               </div>
             </div>

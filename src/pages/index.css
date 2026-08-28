@@ -50,7 +50,7 @@
             height: 100%;
             padding-top: 30px;
             padding-bottom: 20px;
-            padding-inline: 10px;
+            padding-inline: 6px;
             border-radius: 10px;
             background-color: #fff;
             display: block;
@@ -78,6 +78,7 @@
               font-size: 2rem;
               font-weight: bold;
               color: #000;
+              text-align: center;
               transition: 0.2s;
             }
           }
@@ -128,28 +129,38 @@
     .shelf-pinned-article {
       .pinned-list {
         padding-block: 24px;
-        display: flex;
-        gap: 24px;
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0px;
+        place-items: center;
         .pinned-project {
-          width: 90%;
-          height: 160px;
-          padding: 24px;
-          border-radius: 10px;
-          background-color: #fff;
+          width: 100%;
+          padding: 12px 0;
+          background-color: #E5CEA5;
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          h3 {
-            font-size: 2.4rem;
-          }
-          p {
-            text-align: right;
-            font-size: 1.6rem;
-            font-weight: bold;
-            span {
-              font-size: 3.2rem;
+          justify-content: center;
+          align-items: center;
+          /* border: solid 1px tomato; */
+          .project-content {
+            width: 90%;
+            /* height: 160px; */
+            height: fit-content;
+            padding: 16px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            background-color: #fff;
+            /* border: solid 1px black; */
+            h3 {
+              font-size: 2.4rem;
+            }
+            p {
+              text-align: right;
+              font-size: 1.6rem;
+              font-weight: bold;
+              /* border: solid 1px tomato; */
+              span {
+                font-size: 3.2rem;
+              }
             }
           }
         }
@@ -157,18 +168,54 @@
     }
   }
   @media (max-width: 768px) {
+    padding-inline: 20px;
     grid-template-columns: 1fr;
     gap: 0;
     overflow-y: scroll;
+    h2 {
+      height: 36px;
+      font-size: 1.2rem;
+    }
     .shelf-content-left {
       .shelf-saved-article {
         .shelf-wrap {
-          grid-template-columns: 1fr;
+          /* grid-template-columns: 1fr; */
+          gap: 16px;
           .shelf-content {
+            height: 140px;
+            padding: 10px;
             .page-link {
               p {
-                /* font-size: 1.4rem; */
-                text-align: center;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+      .shelf-new-article {
+        .shelf-wrap {
+          gap: 16px;
+        }
+      }
+    }
+    .shelf-content-right {
+      .shelf-pinned-article {
+        .pinned-list {
+          padding-block: 10px;
+          grid-template-columns: repeat(2, 1fr);
+          /* gap: 16px; */
+          .pinned-project {
+            .project-content {
+              padding: 10px;
+              h3 {
+                font-size: 1.4rem;
+                padding-bottom: 10px;
+              }
+              p {
+                font-size: 1rem;
+                span {
+                  font-size: 1.4rem;
+                }
               }
             }
           }
