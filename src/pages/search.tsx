@@ -71,6 +71,14 @@ function Article({ articles, loading }: ArticleProps) {
     
     // });
     
+
+    function resetFilter() {
+      setKeyword("");
+      setSelectedTag("");
+      setFromDate("");
+      setToDate("");
+    }
+  
   // 配列を絞り込む関数
   const filteredArticles = 
     articles.filter(article => {
@@ -103,16 +111,6 @@ function Article({ articles, loading }: ArticleProps) {
         toMatch
       );
 
-      // if(selectedTag === '') return true  
-      //   && article.title.includes(keyword)
-      //   && fromDate === "" && toDate === ""
-      //   || articleDate >= from && toDate === ""
-      //   || fromDate === "" && articleDate <= to
-      //   || articleDate >= from && articleDate <= to;
-
-      // return article.tags.some(tag => tag.name === selectedTag) 
-      //   && article.title.includes(keyword)
-      //   && articleDate >= from && articleDate <= to;
     });
   
 
@@ -187,7 +185,7 @@ function Article({ articles, loading }: ArticleProps) {
             </section>
           </div>
           <div className={`button-wrap ${isSidebarOpen ? "" : "close"}`}>
-            <button type="button">条件をクリア</button>
+            <button type="button" onClick={() => resetFilter()}>条件をクリア</button>
             <button type="button">{filteredArticles.length}件を表示</button>
           </div>
         </div>
