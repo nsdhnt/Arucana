@@ -7,6 +7,8 @@ import Header from "../components/Header";
 import logo from "../assets/logo.png";
 import sidebarIcon from "../assets/sidebar-icon.png";
 import sideDateArrow from "../assets/side-date-arrow.png";
+import btnBookmark from "../assets/btn-bookmark.png";
+import btnMemo from "../assets/btn-memo.png";
 
 // Article.tsx の上部でPropsの型を定義
 interface ArticleProps {
@@ -217,6 +219,16 @@ function Article({ articles, loading }: ArticleProps) {
                         <time>{date}</time>
                         <span>@{article.user.id}</span>
                         <span>{article.likes_count}いいね</span>
+                        <img 
+                          className='btn-bookmark' 
+                          src={btnBookmark} 
+                          alt="ブックマークボタン" 
+                        />
+                        <img 
+                          className='btn-memo' 
+                          src={btnMemo} 
+                          alt="メモボタン" 
+                        />
                       </p>
                       <p className='article-tag'>
                         {article.tags.map((tag) => (

@@ -265,7 +265,18 @@ main{
             font-size: 1rem;
             display: flex;
             flex-wrap: wrap;
-            column-gap: 12px;
+            column-gap: 10px;
+            padding-top: 4px;
+            img {
+              width: 20px;
+              height: 20px;
+              object-fit: contain;
+              pointer-events: none;
+            }
+            .btn-memo {
+              width: 19px;
+              height: 19px;
+            }
           }
           .article-tag{
             font-size: 1rem;
