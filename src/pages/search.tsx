@@ -1,7 +1,7 @@
 
 import type { QiitaArticle } from '../types/Qiita';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import './search.css';
 import Header from "../components/Header";
 import logo from "../assets/logo.png";
@@ -9,14 +9,45 @@ import sidebarIcon from "../assets/sidebar-icon.png";
 import sideDateArrow from "../assets/side-date-arrow.png";
 import btnBookmark from "../assets/btn-bookmark.png";
 import btnMemo from "../assets/btn-memo.png";
+// import Project from './project';
+
+interface Article {
+  id: string;
+  title: string;
+  url: string;
+  created_at: string;
+  likes_count: number;
+  user: {
+    id: string;
+  };
+  tags: {
+    name: string;
+  }[];
+}
+
+interface Projects {
+  id: number;
+  name: string;
+  articles: Article[];
+}
+
 
 // Article.tsx の上部でPropsの型を定義
 interface ArticleProps {
   articles: QiitaArticle[];
   loading: boolean;
+  projects: Projects[];
+  setProjects: React.Dispatch<React.SetStateAction<Projects[]>>;
 }
 
-function Article({ articles, loading }: ArticleProps) {
+
+function Article({ articles, loading, projects, setProjects }: ArticleProps) {
+  // 保存先リスト
+  const [isSavingList, setIsSavingList] = useState<boolean>(false);
+
+  // 今操作中の記事
+  const [selectedArticle, setSelectedArticle] = useState<QiitaArticle | null>(null);
+
   // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
@@ -114,6 +145,50 @@ function Article({ articles, loading }: ArticleProps) {
       );
 
     });
+
+    const handleButtonClick = (
+      e: React.MouseEvent<HTMLImageElement>,
+      article: QiitaArticle
+    ) => {
+      e.preventDefault();
+      // console.log(article);
+      setIsSavingList(true);
+    }
+
+    const judgeSaving = (
+      article: QiitaArticle
+    ) => {
+      console.log(article);
+    }
+
+    const saveArticle = (projectId: number) => {
+      console.log(selectedArticle);
+      if(!selectedArticle) return;
+      setProjects(
+        projects.map(project => {
+          if(projectId === project.id) {
+            // すでに保存されているかチェック
+            const alreadySaved = project.articles.some(
+              article => article.id === selectedArticle.id
+            );
+
+            if(alreadySaved) {
+              return project;
+            }
+
+            return {
+              ...project,
+              articles: [
+                ...project.articles,
+                selectedArticle
+              ]
+            };
+          }
+  
+          return project;
+        })
+      );
+    }
   
 
   return(
@@ -199,6 +274,28 @@ function Article({ articles, loading }: ArticleProps) {
           ></div>
         )}
 
+        {isSavingList && (
+          <div className="sidebar-overlay">
+            <div className='saving-list-card'>
+              <h1>保存先を選ぶ</h1>
+              <ul className='saving-list'>
+                {projects.map((project) => (
+                  <li key={project.id}>
+                    {project.name}
+                    <img 
+                      src={btnBookmark} alt="ブックマークボタン"
+                      onClick={() => saveArticle(project.id)}
+                    />
+                  </li>
+                ))}
+              </ul>
+              <div className='save-btn'>
+                <button onClick={() => setIsSavingList(false)}>完了</button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className='main-block'>
           <div className='article-list'>
             {loading ? (
@@ -223,6 +320,10 @@ function Article({ articles, loading }: ArticleProps) {
                           className='btn-bookmark' 
                           src={btnBookmark} 
                           alt="ブックマークボタン" 
+                          onClick={(e) => {
+                            handleButtonClick(e, article);
+                            setSelectedArticle(article);
+                          }}
                         />
                         <img 
                           className='btn-memo' 
