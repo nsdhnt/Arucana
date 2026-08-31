@@ -35,6 +35,8 @@ main{
     }
     /* border: solid 1px tomato; */
   }
+
+
   .side-bar{
     position: static;
     &.close{
