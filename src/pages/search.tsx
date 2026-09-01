@@ -45,6 +45,9 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
   // 保存先リスト
   const [isSavingList, setIsSavingList] = useState<boolean>(false);
 
+  // メモ記入欄
+  const [isMemoArea, setIsMemoArea] = useState<boolean>(false);
+
   // 今操作中の記事
   const [selectedArticle, setSelectedArticle] = useState<QiitaArticle | null>(null);
 
@@ -146,7 +149,7 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
 
     });
 
-    const handleButtonClick = (
+    const bookmarkButtonClick = (
       e: React.MouseEvent<HTMLImageElement>,
       article: QiitaArticle
     ) => {
@@ -188,6 +191,15 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
           return project;
         })
       );
+    }
+
+    const memoButtonClick = (
+      e: React.MouseEvent<HTMLImageElement>,
+      article: QiitaArticle
+    ) => {
+      e.preventDefault();
+      console.log(article);
+      setIsMemoArea(true);
     }
   
 
@@ -296,6 +308,21 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
           </div>
         )}
 
+        {isMemoArea && (
+          <div className="sidebar-overlay">
+            <div className="memo-card">
+              <h1>記事にメモを残す</h1>
+              <div className='memo-area'>
+                <h2>{selectedArticle.title}</h2>
+                <textarea name="" id=""></textarea>
+              </div>
+              <div className="save-btn">
+                <button onClick={() => setIsMemoArea(false)}>保存</button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className='main-block'>
           <div className='article-list'>
             {loading ? (
@@ -321,7 +348,7 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
                           src={btnBookmark} 
                           alt="ブックマークボタン" 
                           onClick={(e) => {
-                            handleButtonClick(e, article);
+                            bookmarkButtonClick(e, article);
                             setSelectedArticle(article);
                           }}
                         />
@@ -329,6 +356,10 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
                           className='btn-memo' 
                           src={btnMemo} 
                           alt="メモボタン" 
+                          onClick={(e) => {
+                            memoButtonClick(e, article);
+                            setSelectedArticle(article);
+                          }}
                         />
                       </p>
                       <p className='article-tag'>
