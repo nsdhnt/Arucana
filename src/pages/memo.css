@@ -1,31 +1,43 @@
+
+
 .memo-shelf-list {
-  width: 70%;
-  height: 100%;
+  width: 100%;
+  /* height: 100%; */
   margin: 0 auto;
   border-inline: solid 40px #381E00;
-  background-color: #E5CEA5;
-  display: flex;
-  /* gap: 24px; */
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  align-content: start;
+  overflow-y: scroll;
+  @media (max-width: 768px) {
+    border-inline: solid 20px #381E00;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    h3 {
+      font-size: 1.4rem;
+    }
+    .memo-txt {
+      font-size: 1.2rem;
+    }
+    .memo-date {
+      font-size: 1rem;
+    }
+  }
   .memo-shelf {
     list-style: none;
     width: 100%;
     height: fit-content;
     padding: 24px;
     background-color: #E5CEA5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .memo-content {
       width: 100%;
       height: fit-content;
-      padding: 0 10px;
-      padding-bottom: 10px;
+      padding: 0 20px;
+      padding-bottom: 20px;
       border-radius: 10px;
       background-color: #fff;
       font-size: 1.4rem;
       h3 {
-        padding-top: 20px;
+        padding-top: 24px;
         padding-bottom: 10px;
         border-bottom: solid 1px black;
       }
