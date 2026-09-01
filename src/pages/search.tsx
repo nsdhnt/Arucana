@@ -1,7 +1,7 @@
 
 import type { QiitaArticle } from '../types/Qiita';
 
-import { use, useState } from 'react';
+import React, { use, useState } from 'react';
 import './search.css';
 import Header from "../components/Header";
 import logo from "../assets/logo.png";
@@ -31,6 +31,13 @@ interface Projects {
   articles: Article[];
 }
 
+interface Memos {
+  // id: number;
+  title: string;
+  text: string;
+  date: string;
+}
+
 
 // Article.tsx の上部でPropsの型を定義
 interface ArticleProps {
@@ -38,15 +45,20 @@ interface ArticleProps {
   loading: boolean;
   projects: Projects[];
   setProjects: React.Dispatch<React.SetStateAction<Projects[]>>;
+  memos: Memos[];
+  setMemos: React.Dispatch<React.SetStateAction<Memos[]>>;
 }
 
 
-function Article({ articles, loading, projects, setProjects }: ArticleProps) {
+function Article({ articles, loading, projects, setProjects, memos, setMemos }: ArticleProps) {
   // 保存先リスト
   const [isSavingList, setIsSavingList] = useState<boolean>(false);
 
   // メモ記入欄
   const [isMemoArea, setIsMemoArea] = useState<boolean>(false);
+
+  // メモ内容
+  const [memoText, setMemoText] = useState<string>("");
 
   // 今操作中の記事
   const [selectedArticle, setSelectedArticle] = useState<QiitaArticle | null>(null);
@@ -201,6 +213,33 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
       console.log(article);
       setIsMemoArea(true);
     }
+
+    const saveMemo = (
+      e: React.MouseEvent<HTMLElement>
+    ) => {
+      console.log(e);
+      console.log(selectedArticle.title);
+      console.log(memoText);
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+      const day = today.getDate();
+      console.log(`${year}/${month}/${day}`);
+      setMemoText("");
+
+      // メモの保存
+      if(memoText) {
+        const newMemo = {
+          title: selectedArticle.title,
+          text: memoText,
+          date: `${year}/${month}/${day}`
+        }
+        setMemos([
+          ...memos,
+          newMemo
+        ]);
+      }
+    }
   
 
   return(
@@ -314,10 +353,19 @@ function Article({ articles, loading, projects, setProjects }: ArticleProps) {
               <h1>記事にメモを残す</h1>
               <div className='memo-area'>
                 <h2>{selectedArticle.title}</h2>
-                <textarea name="" id=""></textarea>
+                <textarea 
+                  name="" id="" value={memoText}
+                  onChange={(e) => setMemoText(e.target.value)}
+                ></textarea>
               </div>
               <div className="save-btn">
-                <button onClick={() => setIsMemoArea(false)}>保存</button>
+                <button 
+                  onClick={(e) => {
+                    setIsMemoArea(false);
+                    saveMemo(e);
+                  }}
+                >保存
+                </button>
               </div>
             </div>
           </div>
