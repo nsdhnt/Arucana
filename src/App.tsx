@@ -69,6 +69,7 @@ function App() {
     });
   }, []) // 空の配列で一度だけ実行
 
+  // projectsデータ
   const [projects, setProjects] = useState<Projects[]>(() => {
     
     const savedProjects = localStorage.getItem("projects");
@@ -181,18 +182,39 @@ function App() {
     ];
   });
 
+  // memosデータ
+  const [memos, setMemos] = useState(() => {
+    return [
+      {
+        // id: 1,
+        title: "reactについて",
+        text: "useStateの使い方が難しかった",
+        date: "2026-09-04"
+      },
+    ];
+  });
+
 
   return (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route 
         path="/search" 
-        element={<Search articles={articles} loading={loading} projects={projects} setProjects={setProjects} />} />
+        element={<Search 
+          articles={articles} 
+          loading={loading} 
+          projects={projects} 
+          setProjects={setProjects}
+          memos={memos}
+          setMemos={setMemos} />} />
       <Route 
         path="/project" 
         element={<Project projects={projects} setProjects={setProjects} />} 
       />
-      <Route path="/memo" element={<Memo />} />
+      <Route 
+        path="/memo" 
+        element={<Memo memos={memos} setMemos={setMemos} />} 
+      />
       <Route path="/history" element={<History />} />
     </Routes>
   )
