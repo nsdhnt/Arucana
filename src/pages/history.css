@@ -1,3 +1,5 @@
+
+
 .book-shelf{
   .shelf-content-left{
     .ranking{
@@ -153,3 +155,16 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .book-shelf {
+    .shelf-content-left {
+      .ranking {
+        .shelf-wrap {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
+  }
+}
+
