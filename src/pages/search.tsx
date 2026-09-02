@@ -1,7 +1,7 @@
 
 import type { QiitaArticle } from '../types/Qiita';
 
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import './search.css';
 import Header from "../components/Header";
 import logo from "../assets/logo.png";
@@ -170,11 +170,11 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       setIsSavingList(true);
     }
 
-    const judgeSaving = (
-      article: QiitaArticle
-    ) => {
-      console.log(article);
-    }
+    // const judgeSaving = (
+    //   article: QiitaArticle
+    // ) => {
+    //   console.log(article);
+    // }
 
     const saveArticle = (projectId: number) => {
       console.log(selectedArticle);

@@ -20,13 +20,18 @@ interface Article {
   }[];
 }
 
-interface Project {
+interface Projects {
   id: number;
   name: string;
   articles: Article[];
 }
 
-function Project({projects, setProjects}) {
+interface ProjectProps {
+  projects: Projects[];
+  setProjects: React.Dispatch<React.SetStateAction<Projects[]>>;
+}
+
+function Project({projects, setProjects}: ProjectProps) {
   // サイドバー折りたたみ
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
