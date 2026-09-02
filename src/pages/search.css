@@ -398,3 +398,12 @@ main{
     }
   }
 }
+
+@media (max-width: 768px) {
+  main {
+    .side-bar {
+      padding-bottom: 50px;
+      /* border: solid 1px tomato; */
+    }
+  }
+}
