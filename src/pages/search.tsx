@@ -180,7 +180,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       console.log(selectedArticle);
       if(selectedArticle === null) return;
 
-      const articleToSave = selectedArticle;
+      const articleToSave: QiitaArticle = selectedArticle;
 
       setProjects(
         projects.map(project => {
@@ -221,7 +221,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       e: React.MouseEvent<HTMLElement>
     ) => {
 
-      const articleToSave = selectedArticle;
+      const articleToSave: QiitaArticle = selectedArticle;
 
       console.log(e);
       console.log(articleToSave.title);

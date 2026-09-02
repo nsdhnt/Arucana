@@ -67,12 +67,12 @@ function Index() {
               <div className='shelf-wrap'>
                 <div className="shelf-content">
                   <a href="https://qiita.com/" target='_blank'>
-                    <img src={linkQiita} alt="" />
+                    <img src={linkQiita} alt="Qiita" />
                   </a>
                 </div>
                 <div className="shelf-content">
                   <a href="https://zenn.dev/" target='_blank'>
-                    <img src={linkZenn} alt="" />
+                    <img src={linkZenn} alt="Zenn" />
                   </a>
                 </div>
               </div>
