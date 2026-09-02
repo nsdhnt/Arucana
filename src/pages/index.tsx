@@ -10,6 +10,8 @@ import linkIconHistory from '../assets/link-icon-history.png';
 import linkQiita from '../assets/link-qiita.png';
 import linkZenn from '../assets/link-zenn.png';
 
+import books from '../assets/books.png';
+
 // import rightAllow from '../assets/right-allow.png';
 // import blockIconAbout from '../assets/block-icon-about.png';
 // import blockIconArticle from '../assets/block-icon-article.png';
@@ -76,6 +78,11 @@ function Index() {
                   </a>
                 </div>
               </div>
+            </div>
+            <div className="books">
+              <img  src={books} alt="" />
+              <img src={books} alt="" />
+              <img src={books} alt="" />
             </div>
           </div>
           <div className='shelf-content-right'>
