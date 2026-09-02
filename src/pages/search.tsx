@@ -314,7 +314,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
           </div>
           <div className={`button-wrap ${isSidebarOpen ? "" : "close"}`}>
             <button type="button" onClick={() => resetFilter()}>条件をクリア</button>
-            <button type="button">{filteredArticles.length}件を表示</button>
+            <button type="button">{filteredArticles.length}件を表示中</button>
           </div>
         </div>
 

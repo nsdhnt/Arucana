@@ -127,6 +127,9 @@ main{
             /* width: fit-content; */
             width: 100%;
             position: relative;
+            &::-webkit-calendar-picker-indicator {
+              display: none;
+            }
             select{
               /* display: block; */
               width: 114px;
