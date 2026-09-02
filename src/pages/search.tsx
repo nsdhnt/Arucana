@@ -178,16 +178,16 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
 
     const saveArticle = (projectId: number) => {
       console.log(selectedArticle);
-      if(!selectedArticle) return;
+      if(selectedArticle === null) return;
 
-      // const articleToSave = selectedArticle;
+      const articleToSave = selectedArticle;
 
       setProjects(
         projects.map(project => {
           if(projectId === project.id) {
             // すでに保存されているかチェック
             const alreadySaved = project.articles.some(
-              article => article.id === selectedArticle.id
+              article => article.id === articleToSave.id
             );
 
             if(alreadySaved) {
@@ -198,7 +198,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
               ...project,
               articles: [
                 ...project.articles,
-                selectedArticle
+                articleToSave
               ]
             };
           }
@@ -221,10 +221,10 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       e: React.MouseEvent<HTMLElement>
     ) => {
 
-      // const articleToSave = selectedArticle;
+      const articleToSave = selectedArticle;
 
       console.log(e);
-      console.log(selectedArticle.title);
+      console.log(articleToSave.title);
       console.log(memoText);
       const today = new Date();
       const year = today.getFullYear();
@@ -236,7 +236,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       // メモの保存
       if(memoText) {
         const newMemo = {
-          title: selectedArticle.title,
+          title: articleToSave.title,
           text: memoText,
           date: `${year}/${month}/${day}`
         }
