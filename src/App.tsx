@@ -189,7 +189,13 @@ function App() {
         // id: 1,
         title: "reactについて",
         text: "useStateの使い方が難しかった",
-        date: "2026-09-04"
+        date: "2026/9/1"
+      },
+      {
+        // id: 1,
+        title: "TypeScriptの基本",
+        text: "いろんな型宣言の方法があって、覚えるのが大変そう",
+        date: "2026/9/2"
       },
     ];
   });
