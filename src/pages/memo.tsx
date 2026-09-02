@@ -1,6 +1,6 @@
 import "../pages/memo.css";
 import Header from "../components/Header";
-import React, { memo, useState } from 'react';
+import React, { useState } from 'react';
 
 interface Memos {
   // id: number;
@@ -16,8 +16,8 @@ interface MemoProps {
 
 
 function Memo({ memos, setMemos }: MemoProps) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
+  const [, setIsSidebarOpen] = useState<boolean>(true);
+  const [, setIsMobileSidebarOpen] = useState<boolean>(false);
 
   // console.log(isSidebarOpen);
   // console.log(isMobileSidebarOpen);

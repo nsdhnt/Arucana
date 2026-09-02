@@ -163,7 +163,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
 
     const bookmarkButtonClick = (
       e: React.MouseEvent<HTMLImageElement>,
-      article: QiitaArticle
+      // article: QiitaArticle
     ) => {
       e.preventDefault();
       // console.log(article);
@@ -179,12 +179,15 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
     const saveArticle = (projectId: number) => {
       console.log(selectedArticle);
       if(!selectedArticle) return;
+
+      const articleToSave = selectedArticle;
+
       setProjects(
         projects.map(project => {
           if(projectId === project.id) {
             // すでに保存されているかチェック
             const alreadySaved = project.articles.some(
-              article => article.id === selectedArticle.id
+              article => article.id === articleToSave.id
             );
 
             if(alreadySaved) {
@@ -195,7 +198,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
               ...project,
               articles: [
                 ...project.articles,
-                selectedArticle
+                articleToSave
               ]
             };
           }
@@ -217,8 +220,11 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
     const saveMemo = (
       e: React.MouseEvent<HTMLElement>
     ) => {
+
+      const articleToSave = selectedArticle;
+
       console.log(e);
-      console.log(selectedArticle.title);
+      console.log(articleToSave.title);
       console.log(memoText);
       const today = new Date();
       const year = today.getFullYear();
@@ -230,7 +236,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
       // メモの保存
       if(memoText) {
         const newMemo = {
-          title: selectedArticle.title,
+          title: articleToSave.title,
           text: memoText,
           date: `${year}/${month}/${day}`
         }
@@ -347,7 +353,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
           </div>
         )}
 
-        {isMemoArea && (
+        {isMemoArea && selectedArticle && (
           <div className="sidebar-overlay">
             <div className="memo-card">
               <h1>記事にメモを残す</h1>
@@ -396,7 +402,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                           src={btnBookmark} 
                           alt="ブックマークボタン" 
                           onClick={(e) => {
-                            bookmarkButtonClick(e, article);
+                            bookmarkButtonClick(e);
                             setSelectedArticle(article);
                           }}
                         />
