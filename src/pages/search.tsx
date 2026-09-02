@@ -308,7 +308,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                   />
               </div>
             </section>
-            <section className='display-order'>
+            {/* <section className='display-order'>
               <h1>表示順</h1>
               <div className='select-order'>
                 <select name="" id="">
@@ -317,7 +317,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                   <option value=""></option>
                 </select>
               </div>
-            </section>
+            </section> */}
           </div>
           <div className={`button-wrap ${isSidebarOpen ? "" : "close"}`}>
             <button type="button" onClick={() => resetFilter()}>条件をクリア</button>
