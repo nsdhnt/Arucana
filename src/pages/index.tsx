@@ -12,7 +12,7 @@ import linkIconHistory from '../assets/link-icon-history.png';
 import linkQiita from '../assets/link-qiita.png';
 import linkZenn from '../assets/link-zenn.png';
 
-import books from '../assets/books.png';
+// import books from '../assets/books.png';
 
 // import rightAllow from '../assets/right-allow.png';
 // import blockIconAbout from '../assets/block-icon-about.png';
@@ -61,16 +61,12 @@ function Index() {
             <div className="shelf-new-article">
               <h2>新しい記事を探す</h2>
               <div className='shelf-wrap'>
-                {/* <div className="shelf-content"> */}
-                  <a href="https://qiita.com/" target='_blank'>
-                    <img src={linkQiita} alt="Qiita" />
-                  </a>
-                {/* </div> */}
-                {/* <div className="shelf-content"> */}
-                  <a href="https://zenn.dev/" target='_blank'>
-                    <img src={linkZenn} alt="Zenn" />
-                  </a>
-                {/* </div> */}
+                <a href="https://qiita.com/" target='_blank'>
+                  <img src={linkQiita} alt="Qiita" />
+                </a>
+                <a href="https://zenn.dev/" target='_blank'>
+                  <img src={linkZenn} alt="Zenn" />
+                </a>
               </div>            
             </div>
           </div>
@@ -93,13 +89,13 @@ function Index() {
                 <div className='pinned-project'>
                   <div className='project-content'>
                     <h3>grid</h3>
-                    <p>関連記事 <span>6</span> 件</p>
+                    <p>関連記事 <span>8</span> 件</p>
                   </div>
                 </div>
                 <div className='pinned-project'>
                   <div className='project-content'>
                     <h3>ブログサイト</h3>
-                    <p>関連記事 <span>6</span> 件</p>
+                    <p>関連記事 <span>3</span> 件</p>
                   </div>
                 </div>
               </div>
