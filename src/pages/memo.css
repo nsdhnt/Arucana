@@ -1,55 +1,80 @@
 
 
-.memo-shelf-list {
+.memo-book-shelf {
   width: 100%;
   /* height: 100%; */
+  padding-inline: 40px;
   margin: 0 auto;
-  border-inline: solid 40px #381E00;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  align-content: start;
-  overflow-y: scroll;
+  /* border-inline: solid 40px #180D00; */
+  background-color: #180D00;
+  background-image: url("../assets/wood-pillar.png");
+  background-size: cover;
   @media (max-width: 768px) {
-    border-inline: solid 20px #381E00;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    h3 {
-      font-size: 1.4rem;
-    }
-    .memo-txt {
-      font-size: 1.2rem;
-    }
-    .memo-date {
-      font-size: 1rem;
-    }
-  }
-  .memo-shelf {
-    list-style: none;
-    width: 100%;
-    height: fit-content;
-    padding: 24px;
-    background-color: #E5CEA5;
-    .memo-content {
-      width: 100%;
-      height: fit-content;
-      padding: 0 20px;
-      padding-bottom: 20px;
-      border-radius: 10px;
-      background-color: #fff;
-      font-size: 1.4rem;
+    /* border-inline: solid 20px #180D00; */
+    padding-inline: 20px;
+    .memo-shelf-list {
+      /* border: solid 1px tomato; */
+      background-color: #180D00;
+      background-image: url("../assets/wood-pillar.png");
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       h3 {
-        padding-top: 24px;
-        padding-bottom: 10px;
-        border-bottom: solid 1px black;
+        font-size: 1.4rem;
       }
       .memo-txt {
-        padding: 14px 0;
+        font-size: 1.2rem;
       }
       .memo-date {
-        width: fit-content;
-        padding: 4px 10px;
-        border-radius: 4px;
-        color: #fff;
-        background-color: #00375B;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .memo-shelf-list {
+    /* border: solid 1px tomato; */
+    width: 100%;
+    height: 100%;
+    padding: 24px 30px;
+    background-color: #381E00;
+    background-image: url("../assets/wood-image.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    /* display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    align-content: start; */
+    overflow-y: scroll;
+    .memo-shelf {
+      list-style: none;
+      width: 100%;
+      /* height: calc(100vh - 60px); */
+      /* padding: 24px; */
+      .memo-content {
+        /* width: 100%; */
+        height: fit-content;
+        padding: 0 20px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        background-image: url("../assets/wood-image.png");
+        background-size: cover;
+        font-size: 1.4rem;
+        h3 {
+          padding-top: 24px;
+          padding-bottom: 10px;
+          border-bottom: solid 1px black;
+        }
+        .memo-txt {
+          padding: 14px 0;
+        }
+        .memo-date {
+          width: fit-content;
+          padding: 4px 10px;
+          border-radius: 4px;
+          color: #fff;
+          background-color: #00375B;
+        }
       }
     }
   }

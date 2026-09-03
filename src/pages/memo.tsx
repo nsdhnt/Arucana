@@ -30,31 +30,33 @@ function Memo({ memos, setMemos }: MemoProps) {
     <>
       <Header setIsSidebarOpen={setIsSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
       <main>
-        <ul className="memo-shelf-list">
-          {[...memos].reverse().map((memo) => (
-            <li className="memo-shelf">
+        <div className="memo-book-shelf">
+          <ul className="memo-shelf-list">
+            {[...memos].reverse().map((memo) => (
+              <li className="memo-shelf">
+                <div className="memo-content">
+                  <h3>{memo.title}</h3>
+                  <p className="memo-txt">{memo.text}</p>
+                  <p className="memo-date">{memo.date}</p>
+                </div>
+              </li>
+            ))}
+            {/* <li className="memo-shelf">
               <div className="memo-content">
-                <h3>{memo.title}</h3>
-                <p className="memo-txt">{memo.text}</p>
-                <p className="memo-date">{memo.date}</p>
+                <h3>【Tailwind CSS入門 Day16】詳細モーダルを作る</h3>
+                <p className="memo-txt">複雑そうに見えて、思ったより簡単だった</p>
+                <p className="memo-date">2026/09/04</p>
               </div>
             </li>
-          ))}
-          {/* <li className="memo-shelf">
-            <div className="memo-content">
-              <h3>【Tailwind CSS入門 Day16】詳細モーダルを作る</h3>
-              <p className="memo-txt">複雑そうに見えて、思ったより簡単だった</p>
-              <p className="memo-date">2026/09/04</p>
-            </div>
-          </li>
-          <li className="memo-shelf">
-            <div className="memo-content">
-              <h3>【Tailwind CSS入門 Day16】詳細モーダルを作る</h3>
-              <p className="memo-txt">複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった</p>
-              <p className="memo-date">2026/09/04</p>
-            </div>
-          </li> */}
-        </ul>
+            <li className="memo-shelf">
+              <div className="memo-content">
+                <h3>【Tailwind CSS入門 Day16】詳細モーダルを作る</h3>
+                <p className="memo-txt">複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった複雑そうに見えて、思ったより簡単だった</p>
+                <p className="memo-date">2026/09/04</p>
+              </div>
+            </li> */}
+          </ul>
+        </div>
       </main>
     </>
   )
