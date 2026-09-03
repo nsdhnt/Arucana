@@ -60,11 +60,21 @@
             width: 40%;
             height: 40%;
             object-fit: contain;
+            transition: 0.2s;
           }
           p {
             font-size: 2rem;
             font-weight: bold;
             color: black;
+            transition: 0.2s;
+          }
+          &:hover {
+            img {
+              filter: brightness(0) saturate(100%) invert(18%) sepia(62%) saturate(3849%) hue-rotate(188deg) brightness(97%) contrast(102%);
+            }
+            p {
+              color: #005D9B;
+            }
           }
         }
       }
@@ -92,7 +102,7 @@
         } */
         a{
           width: 100%;
-          height: 100%;
+          height: 120px;
           background-color: #fff;
           border-radius: 10px;
           display: block;
@@ -113,13 +123,15 @@
           }
           &:hover {
             img {
-              animation: hoverLink 3s ease-in-out infinite alternate;
+              transform: scale(0.8);
+              /* animation: hoverLink 3s ease-in-out infinite alternate; */
             }
           }
           img{
             width: 50%;
             height: 50%;
             object-fit: contain;
+            transition: 0.3s;
             /* animation: hoverLink 4s infinite alternate; */
           }
         }
@@ -173,6 +185,8 @@
             font-size: 2rem;
             color: white;
             background-color: #810000;
+            background-image: url("../assets/wood-image.png");
+            background-size: cover;
             border-radius: 10px 10px 0 0;
             padding: 10px 20px;
           }
@@ -217,8 +231,13 @@
           } */
           .page-link {
             height: 120px;
+            img {
+              width: 30%;
+              transition: 0.2s;
+            }
             p {
               font-size: 1rem;
+              transition: 0.3s;
             }
           }
         }
@@ -238,7 +257,14 @@
             width: 100%;
             height: 100px;
             img {
+              width: 90%;
               object-fit: contain;
+              /* border: solid 1px tomato; */
+            }
+            &:last-child {
+              img {
+                width: 60%;
+              }
             }
           }
         }
@@ -248,7 +274,7 @@
       .shelf-pinned-article {
         .pinned-list {
           padding-block: 10px;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(1, 1fr);
           /* gap: 16px; */
           .pinned-project {
             .project-content {
