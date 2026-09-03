@@ -363,6 +363,17 @@ main{
           text-decoration: none;
           border-left: solid 2px black;
           transition: 0.3s;
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -11px;
+            width: 20px;
+            height: 20px;
+            background-color: #00375B;
+            border-radius: 10px;
+          }
           &:hover{
             transform: translateX(10px);
             /* background-color: #381e004e; */
