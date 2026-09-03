@@ -1,6 +1,6 @@
 
 import type { QiitaArticle } from './types/Qiita';
-
+// import type { ZennArticle } from './types/Zenn';
 
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';import './App.css'
@@ -22,6 +22,7 @@ interface Article {
   tags: {
     name: string;
   }[];
+  source: "qiita" | "zenn";
 }
 
 interface Projects {
@@ -40,6 +41,7 @@ function App() {
   const TOKEN = import.meta.env.VITE_QIITA_TOKEN;
   const USER_ID = 'hinata_html';
   const URL = `https://qiita.com/api/v2/users/${USER_ID}/stocks`;
+  // const ZENN_URL = 'https://zenn.dev/api/me/library/bookmarks?page=1';
   // console.log("読み込めているトークン:", TOKEN);
 
   // 初回レンダリング時に一回だけAPIを叩く
@@ -57,18 +59,43 @@ function App() {
       }
       return response.json();
     })
-    .then(data => {
-      // console.log(data);
+    // .then(data => {
+    //   // console.log(data);
       
-      setArticles(data); // stateに保存
-      setLoading(false); // ローディング完了
-    })
+    //   setArticles(data); // stateに保存
+    //   setLoading(false); // ローディング完了
+    // })
+    .then(data => {
+      const qiitaArticles = data.map((article: QiitaArticle) => ({
+        ...article,
+        source: "qiita" as const
+      }));
+
+      setArticles(qiitaArticles);
+      setLoading(false);
+    })    
     .catch(error => {
       console.error('API Error:', error);
       setLoading(false);
     });
   }, []) // 空の配列で一度だけ実行
 
+  // useEffect(() => {
+  //   fetch(ZENN_URL)
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Zennデータの取得に失敗しました');
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       console.log('Zenn:', data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Zenn API Error:', error);
+  //     });
+  // }, []);
+  
   // projectsデータ
   const [projects, setProjects] = useState<Projects[]>(() => {
     
