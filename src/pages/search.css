@@ -3,12 +3,14 @@ main{
   height: calc(100vh - 60px);
   display: flex;
   position: fixed;
-  background-color: #E5CEA5;
+  /* background-color: #E5CEA5; */
   /* border: solid 1px tomato; */
   .side-bar{
     width: 300px;
     height: 100%;
-    background-color: #381E00;
+    background-color: #180D00;
+    background-image: url("../assets/wood-image.png");
+    background-size: cover;
     overflow-y: scroll;
     color: white;
     /* position: relative; */
@@ -195,8 +197,12 @@ main{
       /* padding-top: 60px;
       padding-inline: 22px; */
       padding: 22px;
-      background-color: #381E00;
-      background: linear-gradient(to bottom, #381E0033 0%, #381E00 10%);
+      background-color: #180D00;
+      /* background-color: linear-gradient(to bottom, #180D00 0%, #180D00 10%); */
+      background-image: url("../assets/wood-image.png");
+      background-size: cover;
+
+      /* background: linear-gradient(to bottom, #381E0033 0%, #381E00 10%); */
       /* border: solid 1px tomato; */
       &.close{
         display: none;
@@ -226,6 +232,7 @@ main{
     top: 60px;
     left: 0;
     width: 100%;
+    padding-inline: 20px;
     height: calc(100% - 60px);
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 90;
@@ -322,17 +329,29 @@ main{
   .main-block{
     /* border: solid 1px tomato; */
     flex: 1;
-    background-color: #E5CEA5;
+    /* background-color: #E5CEA5; */
+    background-color: #381E00;
+    background-image: url("../assets/wood-image.png");
+    background-size: cover;
     padding: 20px 0;
     overflow-y: scroll;
     .article-list{
       /* border: solid 1px tomato; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
       .article-content{
-        width: 100%;
+        width: 96%;
         /* height: 123px; */
         height: fit-content;
-        border-bottom: solid 10px #381E00;
+        /* border-bottom: solid 10px #381E00; */
+        background-color: #fff;
         padding: 18px 35px;
+        border-radius: 10px;
+        background-image: url("../assets/wood-image.png");
+        background-size: cover;
+        /* border: solid 1px tomato; */
         a{
           /* border: solid 1px black; */
           display: block;
