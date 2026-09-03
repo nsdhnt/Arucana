@@ -3,8 +3,11 @@
 .book-shelf{
   .shelf-content-left{
     .ranking{
-      background-color: #381E00;
+      /* background-color: #381E00; */
       padding-bottom: 24px;
+      h2 {
+        padding-inline: 24px;
+      }
       .shelf-wrap{
         /* display: flex;
         flex-direction: column;
@@ -14,7 +17,7 @@
         gap: 24px;
         .shelf-content{
           height: 190px;
-          background-color: #E5CEA5;
+          /* background-color: #E5CEA5; */
           display: flex;
           justify-content: center;
           align-items: center;
@@ -26,6 +29,8 @@
             border-radius: 10px;
             color: black;
             background-color: #fff;
+            background-image: url("../assets/wood-image.png");
+            background-size: cover;
             font-size: 1.4rem;
             text-decoration: none;
             display: flex;
@@ -96,59 +101,72 @@
   }
 
   .shelf-content-right {
-    .article-content{
-      width: 100%;
-      /* height: 123px; */
-      height: fit-content;
-      border-bottom: solid 10px #381E00;
-      padding: 18px 35px;
-      a{
-        /* border: solid 1px black; */
-        display: block;
-        width: 100%;
+    h2 {
+      padding-inline: 10px;
+    }
+    .article-list {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      .article-content{
+        width: 96%;
+        /* height: 123px; */
         height: fit-content;
-        padding: 0 30px;
-        /* border-radius: 0 10px 10px 0; */
-        color: black;
-        text-decoration: none;
-        border-left: solid 2px black;
-        transition: 0.3s;
-        &:hover{
-          transform: translateX(10px);
-          /* background-color: #381e004e; */
-          color: #00375B;
-          border-left: solid 2px #00375B;
-          .article-tag {
-            span {
-              background-color: #00375B;
+        /* border-bottom: solid 10px #381E00; */
+        padding: 18px 35px;
+        background-color: #fff;
+        background-image: url("../assets/wood-image.png");
+        border-radius: 10px;
+        a{
+          /* border: solid 1px black; */
+          display: block;
+          width: 100%;
+          height: fit-content;
+          padding: 0 30px;
+          /* border-radius: 0 10px 10px 0; */
+          color: black;
+          text-decoration: none;
+          border-left: solid 2px black;
+          transition: 0.3s;
+          &:hover{
+            transform: translateX(10px);
+            /* background-color: #381e004e; */
+            color: #00375B;
+            border-left: solid 2px #00375B;
+            .article-tag {
+              span {
+                background-color: #00375B;
+              }
             }
           }
-        }
-        h1{
-          font-size: 2.4rem;
-        }
-        .article-title{
-          font-size: 1.4rem;
-          font-weight: bold;
-        }
-        .article-info{
-          font-size: 1rem;
-          display: flex;
-          flex-wrap: wrap;
-          column-gap: 12px;
-        }
-        .article-tag{
-          font-size: 1rem;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          padding-top: 6px;
-          span{
-            display: block;
-            padding: 2px 8px;
-            background-color: #381E00;
-            color: white;
-            border-radius: 4px;
+          h1{
+            font-size: 2.4rem;
+          }
+          .article-title{
+            font-size: 1.4rem;
+            font-weight: bold;
+          }
+          .article-info{
+            font-size: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 12px;
+          }
+          .article-tag{
+            font-size: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 6px;
+            span{
+              display: block;
+              padding: 2px 8px;
+              background-color: #381E00;
+              color: white;
+              border-radius: 4px;
+            }
           }
         }
       }
@@ -158,12 +176,31 @@
 
 @media (max-width: 768px) {
   .book-shelf {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding-bottom: 0;
+    h2 {
+      font-size: 1.6rem;
+    }
     .shelf-content-left {
+      /* border: solid 1px tomato; */
       .ranking {
+        /* border: solid 1px white; */
         .shelf-wrap {
           grid-template-columns: repeat(1, 1fr);
+          .shelf-content {
+            &:first-child {
+              /* border: solid 1px tomato; */
+              padding: 0 10px;
+            }
+          }
         }
       }
+    }
+
+    .shelf-content-right {
+      padding: 0 10px;
+      padding-bottom: 60px;
     }
   }
 }
