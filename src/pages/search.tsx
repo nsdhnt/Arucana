@@ -7,7 +7,7 @@ import Header from "../components/Header";
 import logo from "../assets/logo.png";
 import sidebarIcon from "../assets/sidebar-icon.png";
 import sideDateArrow from "../assets/side-date-arrow.png";
-import btnBookmark from "../assets/btn-bookmark.png";
+import btnBookmark from "../assets/btn-bookmark.svg";
 import btnMemo from "../assets/btn-memo.png";
 // import Project from './project';
 
@@ -176,6 +176,8 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
     //   console.log(article);
     // }
 
+    const [activeId, setActiveId] = useState<number | null>(null);
+
     const saveArticle = (projectId: number) => {
       console.log(selectedArticle);
       if(selectedArticle === null) return;
@@ -333,17 +335,28 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
         )}
 
         {isSavingList && (
-          <div className="sidebar-overlay">
+          <div 
+            className="sidebar-overlay"
+            // onClick={() => setIsSavingList(false)}
+          >
             <div className='saving-list-card'>
               <h1>保存先を選ぶ</h1>
               <ul className='saving-list'>
                 {projects.map((project) => (
                   <li key={project.id}>
                     {project.name}
-                    <img 
-                      src={btnBookmark} alt="ブックマークボタン"
-                      onClick={() => saveArticle(project.id)}
-                    />
+                    <p 
+                      className={activeId === project.id ? "active" : ""}
+                      onClick={() => {
+                        saveArticle(project.id);
+                        setActiveId(project.id);
+                      }}
+                    >
+                      <img
+                        src={btnBookmark} alt="ブックマークボタン"
+                        // onClick={() => saveArticle(project.id)}
+                      />
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -355,7 +368,10 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
         )}
 
         {isMemoArea && selectedArticle && (
-          <div className="sidebar-overlay">
+          <div 
+            className="sidebar-overlay"
+            onClick={() => setIsMemoArea(false)}
+          >
             <div className="memo-card">
               <h1>記事にメモを残す</h1>
               <div className='memo-area'>
