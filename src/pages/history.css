@@ -192,6 +192,18 @@
             &:first-child {
               /* border: solid 1px tomato; */
               padding: 0 10px;
+              height: 190px;
+            }
+            a {
+              div {
+                .article-info {
+                  /* border: solid 1px tomato; */
+                  flex-wrap: wrap;
+                  padding: 2px;
+                  column-gap: 10px;
+                  row-gap: 2px;
+                }
+              }
             }
           }
         }
