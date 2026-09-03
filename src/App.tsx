@@ -22,7 +22,7 @@ interface Article {
   tags: {
     name: string;
   }[];
-  source: "qiita" | "zenn";
+  // source: "qiita" | "zenn";
 }
 
 interface Projects {
@@ -59,21 +59,21 @@ function App() {
       }
       return response.json();
     })
-    // .then(data => {
-    //   // console.log(data);
-      
-    //   setArticles(data); // stateに保存
-    //   setLoading(false); // ローディング完了
-    // })
     .then(data => {
-      const qiitaArticles = data.map((article: QiitaArticle) => ({
-        ...article,
-        source: "qiita" as const
-      }));
+      // console.log(data);
+      
+      setArticles(data); // stateに保存
+      setLoading(false); // ローディング完了
+    })
+    // .then(data => {
+    //   const qiitaArticles = data.map((article: QiitaArticle) => ({
+    //     ...article,
+    //     source: "qiita" as const
+    //   }));
 
-      setArticles(qiitaArticles);
-      setLoading(false);
-    })    
+    //   setArticles(qiitaArticles);
+    //   setLoading(false);
+    // })    
     .catch(error => {
       console.error('API Error:', error);
       setLoading(false);
