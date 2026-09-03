@@ -398,24 +398,28 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                         <time>{date}</time>
                         <span>@{article.user.id}</span>
                         <span>{article.likes_count}いいね</span>
-                        <img 
-                          className='btn-bookmark' 
-                          src={btnBookmark} 
-                          alt="ブックマークボタン" 
-                          onClick={(e) => {
-                            bookmarkButtonClick(e);
-                            setSelectedArticle(article);
-                          }}
-                        />
-                        <img 
-                          className='btn-memo' 
-                          src={btnMemo} 
-                          alt="メモボタン" 
-                          onClick={(e) => {
-                            memoButtonClick(e, article);
-                            setSelectedArticle(article);
-                          }}
-                        />
+                        <div className='btn-bookmark-wrap'>
+                          <img
+                            className='btn-bookmark'
+                            src={btnBookmark}
+                            alt="ブックマークボタン"
+                            onClick={(e) => {
+                              bookmarkButtonClick(e);
+                              setSelectedArticle(article);
+                            }}
+                          />
+                        </div>
+                        <div className='btn-memo-wrap'>
+                          <img
+                            className='btn-memo'
+                            src={btnMemo}
+                            alt="メモボタン"
+                            onClick={(e) => {
+                              memoButtonClick(e, article);
+                              setSelectedArticle(article);
+                            }}
+                          />
+                        </div>
                       </p>
                       <p className='article-tag'>
                         {article.tags.map((tag) => (

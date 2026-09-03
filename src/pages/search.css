@@ -404,9 +404,57 @@ main{
               object-fit: contain;
               /* pointer-events: none; */
             }
-            .btn-memo {
-              width: 19px;
-              height: 19px;
+            .btn-bookmark-wrap {
+              position: relative;
+              &:hover {
+                &::after {
+                  display: flex;
+                }
+              }
+              &::after {
+                content: "プロジェクトに保存";
+                position: absolute;
+                top: 110%;
+                left: -220%;
+                width: 100px;
+                height: 10px;
+                padding: 8px 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                background-color: #222;
+                border-radius: 4px;
+                display: none;
+              }
+            }
+            .btn-memo-wrap {
+              position: relative;
+              &:hover {
+                &::after {
+                  display: flex;
+                }
+              }
+              &::after {
+                content: "メモを残す";
+                position: absolute;
+                top: 110%;
+                left: -140%;
+                width: 60px;
+                height: 10px;
+                padding: 8px 6px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                background-color: #222;
+                border-radius: 4px;
+                display: none;
+              }
+              .btn-memo {
+                width: 19px;
+                height: 19px;
+              }
             }
           }
           .article-tag{
