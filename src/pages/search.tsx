@@ -370,7 +370,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
         {isMemoArea && selectedArticle && (
           <div 
             className="sidebar-overlay"
-            onClick={() => setIsMemoArea(false)}
+            // onClick={() => setIsMemoArea(false)}
           >
             <div className="memo-card">
               <h1>記事にメモを残す</h1>
@@ -447,7 +447,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                 )
               })
             )}
-            <article className='article-content'>
+            {/* <article className='article-content'>
               <a href="https://zenn.dev/saru_no_note/articles/21ab19e8a0a9c1" target='_blank'>
                 <h1>19</h1>
                 <p className='article-title'>【css】filterを使用して、cssだけ画像の色を変更する【hover】</p>
@@ -474,7 +474,7 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                   <span>Zenn</span>
                 </p>
               </a>
-            </article>
+            </article> */}
           </div>
         </div>
       </main>
