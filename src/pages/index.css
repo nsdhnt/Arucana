@@ -144,11 +144,20 @@
     height: 100%;
     background-color: #381E00;
     background-image: url("../assets/wood-image.png");
+    .books {
+      position: absolute;
+      bottom: 0;
+      right: 40px;
+      width: 300px;
+    }
   }
   .shelf-pinned-article {
     /* padding-inline: 20px; */
     h2 {
+      width: 94%;
+      margin: 0 auto;
       padding-inline: 20px;
+      /* border: solid 1px tomato; */
     }
     .pinned-list {
       /* padding-block: 24px; */

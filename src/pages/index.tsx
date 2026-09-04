@@ -12,7 +12,7 @@ import linkIconHistory from '../assets/link-icon-history.png';
 import linkQiita from '../assets/link-qiita.png';
 import linkZenn from '../assets/link-zenn.png';
 
-// import books from '../assets/books.png';
+import books from '../assets/books.png';
 
 // import rightAllow from '../assets/right-allow.png';
 // import blockIconAbout from '../assets/block-icon-about.png';
@@ -38,7 +38,7 @@ function Index() {
         <div className="book-shelf">
           <div className="shelf-content-left">
             <div className="shelf-saved-article">
-              <h2>新しい記事を探す</h2>
+              <h2>保存した記事を探す</h2>
               <div className="shelf-wrap">
                 <Link to="/search" className="page-link">
                   <img src={linkIconSearch} alt="検索ページリンク" />
@@ -100,6 +100,7 @@ function Index() {
                 </div>
               </div>
             </div>
+            <img className='books' src={books} alt="" />
           </div>
         </div>
       </main>    
