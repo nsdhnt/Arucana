@@ -447,31 +447,34 @@ function Article({ articles, loading, projects, setProjects, memos, setMemos }: 
                 )
               })
             )}
-            {/* <article className='article-content'>
-              <a href="#">
-                <h1>01</h1>
-                <p className='article-title'>【Tailwind CSS入門 Day16】詳細モーダルを作る</p>
+            <article className='article-content'>
+              <a href="https://zenn.dev/saru_no_note/articles/21ab19e8a0a9c1" target='_blank'>
+                <h1>19</h1>
+                <p className='article-title'>【css】filterを使用して、cssだけ画像の色を変更する【hover】</p>
                 <p className='article-info'>
-                  <time>2026/5/26</time>
-                  <span>@honda-dev-jp</span>
-                  <span>128</span>
+                  <time>2024/12/11</time>
+                  <span>saru@文系コーダー</span>
+                  <span>5</span>
                 </p>
                 <p className='article-tag'>
-                  <span></span>
+                  <span>CSS</span>
                 </p>
               </a>
             </article>
             <article className='article-content'>
-              <a href="#">
-                <h1>02</h1>
-                <p className='article-title'>CSS @keyframes をビジュアル編集するツールを作った — タイムライン UI と「アニメーションを再起動する」CSS のワナ</p>
+              <a href="https://zenn.dev/to3izo/articles/7653dfc67d268f" target='_blank'>
+                <h1>20</h1>
+                <p className='article-title'>【爆速】30秒で出来る、Zennアカウントの作り方</p>
                 <p className='article-info'>
-                  <time>2026/5/26</time>
-                  <span>@sen-ltd</span>
-                  <span>128</span>
+                  <time>2023/2/16</time>
+                  <span>とみぞー</span>
+                  <span>0</span>
+                </p>
+                <p className="article-tag">
+                  <span>Zenn</span>
                 </p>
               </a>
-            </article> */}
+            </article>
           </div>
         </div>
       </main>
